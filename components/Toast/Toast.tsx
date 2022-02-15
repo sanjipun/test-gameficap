@@ -6,6 +6,7 @@ const Toast: NextPage = () => {
   const { showToast, type, toastMessage } = useToast();
   return (
     <div
+      id="toast"
       className={`${
         type === 'success' ? 'bg-green-500' : type === 'fail' ? 'bg-red-500' : 'bg-yellow-500'
       } max-w-sm w-full transform transition-all duration-700 ease-in-out ${

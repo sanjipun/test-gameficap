@@ -3,7 +3,7 @@ import React from 'react';
 
 const TrendingNews = () => {
   return (
-    <div className="bg-trendingNewsBg bg-opacity-20">
+    <div id="trending-news" className="bg-trendingNewsBg bg-opacity-20">
       <section className="py-14 max-w-1440 px-20 mx-auto">
         <h1 className="text-2xl">Trending News</h1>
         <div className="flex justify-between flex-wrap">

@@ -3,7 +3,7 @@ import React from 'react';
 
 const LandingPage = () => {
   return (
-    <div className="bg-landingBG">
+    <div id="landing-page" className="bg-landingBG">
       <section className="grid grid-cols-2 max-w-1440 mx-auto px-20 py-36">
         <section>
           <h1 className="text-5xl leading-56 text-primary">{LANDING_DATA.title}</h1>

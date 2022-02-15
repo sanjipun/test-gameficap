@@ -10,7 +10,7 @@ interface TrendingNewsCardProps {
 
 const TrendingNewsCard: React.FC<TrendingNewsCardProps> = ({ news }) => {
   return (
-    <div className="w-72 text-primary mt-5">
+    <div id="token-news-card" className="w-72 text-primary mt-5">
       <div className="relative h-185 bg-white">
         <img
           src="/assets/image.svg"

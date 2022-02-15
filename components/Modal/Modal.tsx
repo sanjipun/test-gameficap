@@ -7,7 +7,7 @@ type ModalProps = {
 
 const Modal: React.FC<ModalProps> = ({ children, showModal }) => {
   return (
-    <div>
+    <div id="modal">
       <div
         className={`${
           showModal ? 'opacity-100' : 'opacity-0'
