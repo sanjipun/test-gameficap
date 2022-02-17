@@ -1,7 +1,8 @@
-import { useToast } from '@store/Toast.store';
 import React from 'react';
 import type { NextPage } from 'next';
 import SEO from '../components/SEO/SEO';
+import Loader from '../components/Loader/Loader';
+import { useToast } from '@store/Toast.store';
 import Modal from '@components/Modal/Modal';
 
 const Home: NextPage = () => {
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
           <button onClick={() => setSHowModal(false)}>Close</button>
         </div>
       </Modal>
+      <Loader />
     </div>
   );
 };
