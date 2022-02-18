@@ -57,7 +57,7 @@ Reload Staging:
     - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 600 ~/.ssh
-    - ssh -o "StrictHostKeyChecking no" ubuntu@44.192.53.105 "cd /var/local/gameficap-product && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $DOCKER_REGISTRY && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging && docker-compose up -d"
+    - ssh -o "StrictHostKeyChecking no" ubuntu@3.237.8.137 "cd /var/local/gameficap-product && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $DOCKER_REGISTRY && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging && docker-compose up -d"
 
 Release to Production:
   image: alpine
