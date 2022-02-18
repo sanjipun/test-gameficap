@@ -31,7 +31,7 @@ docker build and push:
     - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" && export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
     #- echo $AWS_ACCESS_KEY_ID && echo $AWS_SECRET_ACCESS_KEY
     - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com
-    - cd /builds/royalprotocol/gameficap-product && ls && pwd && tree
+    - cd /builds/royalprotocol/gameficap/gameficap-product/gameficap/compose/local/web && ls && pwd && tree
     - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging .  
     - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging
     - > 
