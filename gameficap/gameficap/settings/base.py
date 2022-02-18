@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'grapple',
     # 'api',
-    'graphene_django'
+    'graphene_django',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -183,3 +184,7 @@ GRAPHENE = {"SCHEMA": "grapple.schema.schema"}
 GRAPPLE = {
     "APPS": ["home"],
 }
+
+CORS_ALLOW_HEADERS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
