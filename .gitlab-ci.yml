@@ -56,7 +56,7 @@ Reload Staging:
     - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 600 ~/.ssh
-    - ssh -o "StrictHostKeyChecking no" ubuntu@44.192.53.105 "cd /var/local/frontend-standalone && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $DOCKER_REGISTRY && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging && docker-compose up -d"
+    - ssh -o "StrictHostKeyChecking no" ubuntu@44.192.53.105 "cd /var/local/gameficap-product && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $DOCKER_REGISTRY && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging && docker-compose up -d"
 
 Release to Production:
   image: alpine
@@ -77,4 +77,4 @@ Release to Production:
       currentreltag=$(curl --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_CURRENT_TAG" 
       | 
       jq -r '.value')
-    - ssh -o "StrictHostKeyChecking no" ubuntu@18.207.4.91 "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com && cd /var/local/frontend-standalone && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$currentreltag && cp docker-compose-traefik-template.txt docker-compose.yml && sed -i 's/<DOCKER_IMAGE_HERE>/$currentreltag/g' docker-compose.yml && docker-compose up -d"    
+    - ssh -o "StrictHostKeyChecking no" ubuntu@18.207.4.91 "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com && cd /var/local/gameficap-product && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$currentreltag && cp docker-compose-traefik-template.txt docker-compose.yml && sed -i 's/<DOCKER_IMAGE_HERE>/$currentreltag/g' docker-compose.yml && docker-compose up -d"    
