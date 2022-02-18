@@ -5,22 +5,7 @@ variables:
   APP_NAME: royalprotocol-ecr
   DOCKER_HOST: tcp://docker:2375
 
-# This file is a template, and might need editing before it works on your project.
-# To contribute improvements to CI/CD templates, please follow the Development guide at:
-# https://docs.gitlab.com/ee/development/cicd/templates.html
-# This specific template is located at:
-# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
-
-# This is a sample GitLab CI/CD configuration file that should run without any modifications.
-# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
-# it uses echo commands to simulate the pipeline execution.
-#
-# A pipeline is composed of independent jobs that run scripts, grouped into stages.
-# Stages run in sequential order, but jobs within stages run in parallel.
-#
-# For more information, see: https://docs.gitlab.com/ee/ci/yaml/index.html#stages
-
-stages:          # List of stages for jobs, and their order of execution
+stages:       
   - docker-build-push
   - reload-staging
   - release-to-production
@@ -46,10 +31,10 @@ docker build and push:
     #- echo $AWS_ACCESS_KEY_ID && echo $AWS_SECRET_ACCESS_KEY
     - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com
     - cd /builds/royalprotocol/gameficap-product/gameficap/compose/local/web 
-    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging -f DevOps/Dockerfile .  
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging .  
     - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging
     - > 
-      releaseval=$(curl --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" "https://gitlab.com/api/v4/projects/29905278/variables/PROD_RELEASE_COUNT" 
+      releaseval=$(curl --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" "https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_COUNT" 
       | 
       jq -r '.value')
     - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-rc.$(date '+%Y.%m.%d-'$releaseval) -f DevOps/DockerfileProd .    
@@ -57,7 +42,7 @@ docker build and push:
     - count=$((releaseval+1))
     - echo $count
     - >
-      curl --request PUT --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" https://gitlab.com/api/v4/projects/29905278/variables/PROD_RELEASE_COUNT --form "value=$count"
+      curl --request PUT --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_COUNT --form "value=$count"
 
 
 Reload Staging:
@@ -71,7 +56,7 @@ Reload Staging:
     - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 600 ~/.ssh
-    - ssh -o "StrictHostKeyChecking no" ubuntu@stage.exchange.nftyswap.io "cd /var/local/frontend-standalone && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com && docker-compose down && docker pull 166742359725.dkr.ecr.us-east-1.amazonaws.com/royalprotocol-ecr:exchange-nftyswap-staging && docker-compose up -d"
+    - ssh -o "StrictHostKeyChecking no" ubuntu@44.192.53.105 "cd /var/local/frontend-standalone && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $DOCKER_REGISTRY && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging && docker-compose up -d"
 
 Release to Production:
   image: alpine
@@ -89,7 +74,7 @@ Release to Production:
     - mkdir -p ~/.ssh
     - chmod 600 ~/.ssh
     - > 
-      currentreltag=$(curl --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "https://gitlab.com/api/v4/projects/29905278/variables/PROD_RELEASE_CURRENT_TAG" 
+      currentreltag=$(curl --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_CURRENT_TAG" 
       | 
       jq -r '.value')
     - ssh -o "StrictHostKeyChecking no" ubuntu@18.207.4.91 "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com && cd /var/local/frontend-standalone && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$currentreltag && cp docker-compose-traefik-template.txt docker-compose.yml && sed -i 's/<DOCKER_IMAGE_HERE>/$currentreltag/g' docker-compose.yml && docker-compose up -d"    
