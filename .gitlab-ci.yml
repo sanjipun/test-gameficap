@@ -1,0 +1,74 @@
+variables:
+  DOCKER_REGISTRY: 166742359725.dkr.ecr.us-east-1.amazonaws.com
+  AWS_DEFAULT_REGION: us-east-1
+  PROJECT_NAME: GameFiCap
+  APP_NAME: royalprotocol-ecr
+  DOCKER_HOST: tcp://docker:2375
+
+# This file is a template, and might need editing before it works on your project.
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
+
+# This is a sample GitLab CI/CD configuration file that should run without any modifications.
+# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
+# it uses echo commands to simulate the pipeline execution.
+#
+# A pipeline is composed of independent jobs that run scripts, grouped into stages.
+# Stages run in sequential order, but jobs within stages run in parallel.
+#
+# For more information, see: https://docs.gitlab.com/ee/ci/yaml/index.html#stages
+
+stages:          # List of stages for jobs, and their order of execution
+  - docker-build-push
+  - reload-staging
+  - deploy-to-prod
+
+push docker staging:
+  stage: docker-publish-staging
+  image: 
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'    
+  before_script:
+    - amazon-linux-extras install docker
+    - aws --version
+    - docker --version
+  script:
+    - pwd && ls -lrt && ls -la && cd /root && mkdir .aws 
+    - cd /root/.aws && echo -e "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\nAWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" > credentials 
+    #&& cat credentials
+    - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" && export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+    #- echo $AWS_ACCESS_KEY_ID && echo $AWS_SECRET_ACCESS_KEY
+    - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com
+    - cd /builds/royalprotocol/gameficap-product/gameficap/compose/local/web 
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging -f DevOps/Dockerfile .  
+    - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging
+    - > 
+      releaseval=$(curl --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" "https://gitlab.com/api/v4/projects/29905278/variables/PROD_RELEASE_COUNT" 
+      | 
+      jq -r '.value')
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-rc.$(date '+%Y.%m.%d-'$releaseval) -f DevOps/DockerfileProd .    
+    - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-rc.$(date '+%Y.%m.%d-'$releaseval)
+    - count=$((releaseval+1))
+    - echo $count
+    - >
+      curl --request PUT --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" https://gitlab.com/api/v4/projects/29905278/variables/PROD_RELEASE_COUNT --form "value=$count"
+
+
+Reload Staging:
+  image: alpine
+  stage: reload_staging
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "push"'
+  script:
+    - 'command -v ssh-agent >/dev/null || ( apk add openssh rsync )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 600 ~/.ssh
+    - ssh -o "StrictHostKeyChecking no" ubuntu@stage.exchange.nftyswap.io "cd /var/local/frontend-standalone && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com && docker-compose down && docker pull 166742359725.dkr.ecr.us-east-1.amazonaws.com/royalprotocol-ecr:exchange-nftyswap-staging && docker-compose up -d"
