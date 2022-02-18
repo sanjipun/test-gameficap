@@ -50,7 +50,7 @@ Reload Staging:
   image: alpine
   stage: reload-staging
   rules:
-    - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'
   script:
     - 'command -v ssh-agent >/dev/null || ( apk add openssh rsync )'
     - eval $(ssh-agent -s)
