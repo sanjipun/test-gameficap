@@ -29,4 +29,6 @@ RUN chmod +x /start
 
 WORKDIR /app
 
+COPY . /app
+
 ENTRYPOINT ["/entrypoint"]
