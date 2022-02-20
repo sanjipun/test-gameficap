@@ -4,7 +4,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 const Navbar = () => {
   return (
     <nav id="nav" className="max-w-1440 mx-auto px-20">
-      <div className="flex justify-between items-center h-24">
+      <div className="hidden md:flex justify-between items-center h-24">
         <div>Logo</div>
         <div>
           {NAVBAR_DATA.map((navData, i: number) => (
@@ -23,6 +23,7 @@ const Navbar = () => {
         </div>
         <div className="bg-slate-500 text-white px-4 py-2 rounded-md">Connect Wallet</div>
       </div>
+      <div className="h-24 flex md:hidden justify-between items-center">Mobile Nav</div>
     </nav>
   );
 };
