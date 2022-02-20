@@ -1,0 +1,81 @@
+variables:
+  DOCKER_REGISTRY: 166742359725.dkr.ecr.us-east-1.amazonaws.com
+  AWS_DEFAULT_REGION: us-east-1
+  PROJECT_NAME: GameFiCap
+  APP_NAME: royalprotocol-ecr
+  DOCKER_HOST: tcp://docker:2375
+
+stages:       
+  - docker-build-push
+  - reload-staging
+  - release-to-production
+
+docker build and push:
+  stage: docker-build-push
+  image: 
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'    
+  before_script:
+    - yum install jq tree unzip -y
+    - amazon-linux-extras install docker 
+    - aws --version
+    - docker --version
+  script:
+    - pwd && ls -lrt && ls -la && cd /root && mkdir .aws 
+    - cd /root/.aws && echo -e "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\nAWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" > credentials 
+    #&& cat credentials
+    - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" && export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+    #- echo $AWS_ACCESS_KEY_ID && echo $AWS_SECRET_ACCESS_KEY
+    - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com
+    - cd /builds/royalprotocol/gameficap/gameficap-product/gameficap && ls && pwd && tree && cp compose/local/web/Dockerfile . 
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging .
+    - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging
+    - > 
+      releaseval=$(curl --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" "https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_COUNT" 
+      | 
+      jq -r '.value')
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-rc.$(date '+%Y.%m.%d-'$releaseval) .    
+    - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-rc.$(date '+%Y.%m.%d-'$releaseval)
+    - count=$((releaseval+1))
+    - echo $count
+    - >
+      curl --request PUT --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_COUNT --form "value=$count"
+
+
+Reload Staging:
+  image: alpine
+  stage: reload-staging
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'
+  script:
+    - 'command -v ssh-agent >/dev/null || ( apk add openssh rsync )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 600 ~/.ssh
+    - ssh -o "StrictHostKeyChecking no" ubuntu@3.237.8.137 "cd /var/local/gameficap-product && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $DOCKER_REGISTRY && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-staging && docker-compose up -d"
+
+Release to Production:
+  image: alpine
+  stage: release-to-production
+  rules: 
+    - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "push"'
+    - when: manual
+  before_script:
+    - apk add jq curl
+  script:
+    - 'command -v ssh-agent >/dev/null || ( apk add openssh rsync )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY_STAGING"
+    - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 600 ~/.ssh
+    - > 
+      currentreltag=$(curl --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_CURRENT_TAG" 
+      | 
+      jq -r '.value')
+    - ssh -o "StrictHostKeyChecking no" ubuntu@18.207.4.91 "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com && cd /var/local/gameficap-product && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$currentreltag && cp docker-compose-traefik-template.txt docker-compose.yml && sed -i 's/<DOCKER_IMAGE_HERE>/$currentreltag/g' docker-compose.yml && docker-compose up -d"    
