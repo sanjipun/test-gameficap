@@ -26,6 +26,6 @@
     "strictNullChecks": true,
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "setupProxy.js", "utils/apollo-client.ts"],
   "exclude": ["node_modules"]
 }
