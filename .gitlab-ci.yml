@@ -20,7 +20,7 @@ build front end code:
   before_script: 
   ## Add private key from variable so we can rsync build to server
     - cd /builds/royalprotocol/gameficap/gameficap-product && pwd && ls -lrt
-    - npm install
+    - npm i --legacy-peer-deps
     #- npm run test
   script:
     - npm run build
