@@ -1,5 +1,6 @@
 import AllCards from '@views/ViewAllPage/AllCards';
 import Header from '@views/ViewAllPage/Header';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 
 interface ViewAllProps {
@@ -17,26 +18,17 @@ const ViewAll: React.FC<ViewAllProps> = ({ path }) => {
 
 export default ViewAll;
 
-export async function getStaticPaths() {
-  const paths = [
-    { params: { slug: 'trending-news' } },
-    { params: { slug: 'trending-tokens' } },
-    { params: { slug: 'top-nfts' } },
-    { params: { slug: 'trending-games' } },
-    { params: { slug: 'star-charts' } },
-    { params: { slug: 'favorite-tokens' } },
-  ];
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = [{ params: { slug: 'trending-news' } }, { params: { slug: 'game-fi-cap-news' } }];
   return {
     paths,
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps(context) {
+export const getStaticProps = async (context) => {
   const slug = context.params.slug;
-  //const res = await fetch(`https://localhost:3000/view-all/${params.slug}`);
-  //const page = await res.json();
   return {
     props: { path: slug },
   };
-}
+};

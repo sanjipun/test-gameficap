@@ -15,7 +15,7 @@ const SlugTitleDetails = () => {
       slug: router.query.title,
     },
   });
-  console.log(data);
+
   return (
     <div className="max-w-1440 mx-auto px-20 text-primary leading-6">
       <div className="mt-14 flex">

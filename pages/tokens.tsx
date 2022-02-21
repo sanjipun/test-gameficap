@@ -1,9 +1,7 @@
 import React from 'react';
 
-interface tokensProps {}
-
-const tokens: React.FC<tokensProps> = () => {
+const Tokens = () => {
   return <div>This is token page</div>;
 };
 
-export default tokens;
+export default Tokens;

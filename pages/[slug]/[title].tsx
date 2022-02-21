@@ -41,8 +41,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const title = context.params.title;
-  //const res = await fetch(`https://localhost:3000/view-all/${params.slug}`);
-  //const page = await res.json();
   return {
     props: { path: title },
   };
