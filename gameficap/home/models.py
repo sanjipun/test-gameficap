@@ -1,20 +1,58 @@
+from contextlib import redirect_stdout
 from django.db import models
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
 from wagtail.core.models import Page
+from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.admin.edit_handlers import (FieldPanel, StreamFieldPanel,MultiFieldPanel)
 from wagtail.images.edit_handlers import ImageChooserPanel
 from grapple.helpers import register_query_field
-import graphene
-
-
 from grapple.models import(
     GraphQLString,
     GraphQLStreamfield,
     GraphQLImage
 )
+import graphene
 
+  
+@register_setting
+class SocialMediaSettings(BaseSetting):
+    facebook = models.URLField(
+        help_text='Your Facebook page URL',
+        blank=True)
+    instagram = models.CharField(
+        max_length=255, 
+        blank=True,
+        help_text='Your Instagram username, without the @')
+    twitter = models.URLField(
+        blank=True,
+        help_text='Your Twitter Profile URL')
+    youtube = models.URLField(
+        blank=True,
+        help_text='Your YouTube channel or user account URL')
+    linkedin = models.URLField(
+        blank=True,
+        help_text='Your Linked Profile or user account URL')
+
+    class Meta:
+        verbose_name = 'social media accounts'
+
+    panels = [
+        FieldPanel('facebook'),
+        FieldPanel('instagram'),
+        FieldPanel('twitter'),
+        FieldPanel('youtube'),
+        FieldPanel('linkedin'),
+    ]
+
+    graphql_fields = [
+        GraphQLString("facebook"),
+        GraphQLString("instagram"),
+        GraphQLString("twitter"),
+        GraphQLString("youtube"),
+        GraphQLString('linkedin'),
+    ]
 
 @register_query_field('header', 'headers', {
     "header_type": graphene.String(),
