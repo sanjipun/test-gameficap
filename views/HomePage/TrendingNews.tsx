@@ -1,15 +1,18 @@
+import { useQuery } from '@apollo/client';
 import SectionTitle from '@components/SectionTitle';
 import SlickSlider from '@components/SlickSlider';
 import TrendingCard from '@components/TrendingCard';
+import { gql } from 'apollo-boost';
 import React from 'react';
 
 const TrendingNews = () => {
+  const { data, loading, error } = useQuery(QUERY);
   return (
     <div id="trending-news" className="bg-C4C4C4 bg-opacity-20 text-primary">
       <section className="py-14 max-w-1440 px-20 mx-auto">
         <SectionTitle title="Trending News"></SectionTitle>
-        <SlickSlider totalData={TRENDING_NEWS.length}>
-          {TRENDING_NEWS.map((data, i) => (
+        <SlickSlider totalData={data?.pages?.length}>
+          {data?.pages?.map((data, i) => (
             <TrendingCard key={i} data={data} />
           ))}
         </SlickSlider>
@@ -20,30 +23,21 @@ const TrendingNews = () => {
 
 export default TrendingNews;
 
-const TRENDING_NEWS: { title: string; categoryTag: string; date: string }[] = [
-  {
-    title: 'Breakdown:How to Ride the Dip',
-    categoryTag: 'Category Tag',
-    date: 'Feb 12, 2022',
-  },
-  {
-    title: 'Breakdown:How to Ride the Dip',
-    categoryTag: 'Category Tag',
-    date: 'Feb 12, 2022',
-  },
-  {
-    title: 'Breakdown:How to Ride the Dip',
-    categoryTag: 'Category Tag',
-    date: 'Feb 12, 2022',
-  },
-  {
-    title: 'Breakdown:How to Ride the Dip',
-    categoryTag: 'Category Tag',
-    date: 'Feb 12, 2022',
-  },
-  {
-    title: 'Breakdown:How to Ride the Dip',
-    categoryTag: 'Category Tag',
-    date: 'Feb 12, 2022',
-  },
-];
+const QUERY = gql`
+  query MyQuery {
+    pages {
+      ... on NewsArticlePage {
+        slug
+        title
+        date
+        body {
+          ... on ImageChooserBlock {
+            image {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+`;

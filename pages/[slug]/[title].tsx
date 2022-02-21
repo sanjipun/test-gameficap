@@ -1,5 +1,7 @@
+import client from '@utils/apollo-client';
 import SlugTitleDetails from '@views/ViewAllPage/SlugTitlePage/SlugTitleDetails';
 import SlugTitleHeader from '@views/ViewAllPage/SlugTitlePage/SlugTitleHeader';
+import { gql } from 'apollo-boost';
 import React from 'react';
 
 interface SlugTitleProps {
@@ -18,10 +20,22 @@ const SlugTitle: React.FC<SlugTitleProps> = ({ path }) => {
 export default SlugTitle;
 
 export async function getStaticPaths() {
-  const paths = [{ params: { slug: 'trending-news', title: 'how-to-ride-the-dip' } }];
+  const { data } = await client.query({
+    query: gql`
+      query MyQuery {
+        pages {
+          title
+        }
+      }
+    `,
+  });
+
+  const paths = data?.pages?.map((title) => ({
+    params: { slug: 'trending-news', title: title.title },
+  }));
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 

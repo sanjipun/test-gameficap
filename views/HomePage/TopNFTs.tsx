@@ -20,29 +20,91 @@ const TopNFTs = () => {
 
 export default TopNFTs;
 
-const TOP_NFTS: { title: string; date: string }[] = [
+const TOP_NFTS: {
+  title: string;
+  body: {
+    image?: {
+      url: string;
+    };
+  }[];
+  date: string;
+}[] = [
   {
     title: 'NFT and a dummy text',
     date: 'Feb 12, 2022',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
   {
     title: 'NFT and a dummy text',
     date: 'Feb 12, 2022',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
   {
     title: 'NFT and a dummy text',
     date: 'Feb 12, 2022',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
   {
     title: 'NFT and a dummy text',
     date: 'Feb 12, 2022',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
   {
     title: 'NFT and a dummy text',
     date: 'Feb 12, 2022',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
   {
     title: 'NFT and a dummy text',
     date: 'Feb 12, 2022',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
 ];

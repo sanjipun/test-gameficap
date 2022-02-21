@@ -20,25 +20,78 @@ const TrendingGames = () => {
 
 export default TrendingGames;
 
-const TRENDING_GAMES: { title: string; date: string }[] = [
+const TRENDING_GAMES: {
+  title: string;
+  body: {
+    image?: {
+      url: string;
+    };
+  }[];
+  date: string;
+}[] = [
   {
     title: 'Game and a dummy text',
     date: '$ 284',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
   {
     title: 'Game and a dummy text',
     date: '$ 284',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
   {
     title: 'Game and a dummy text',
     date: '$ 284',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
   {
     title: 'Game and a dummy text',
     date: '$ 284',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
   {
     title: 'Game and a dummy text',
     date: '$ 284',
+    body: [
+      {},
+      {},
+      {
+        image: {
+          url: '/assets/image.svg',
+        },
+      },
+    ],
   },
 ];

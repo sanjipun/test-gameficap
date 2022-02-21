@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav id="nav" className="max-w-1440 mx-auto px-20">
       <div className="hidden md:flex justify-between items-center h-24">
-        <div>Logo</div>
+        <Link href="/">Logo</Link>
         <div>
           {NAVBAR_DATA.map((navData, i: number) => (
             <Link key={i} href={navData.path}>
