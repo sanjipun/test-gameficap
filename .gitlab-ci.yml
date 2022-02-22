@@ -19,7 +19,7 @@ build front end code:
     - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'
   before_script: 
   ## Add private key from variable so we can rsync build to server
-    - cd /builds/royalprotocol/gameficap/gameficap-product && cp DevOps/apollo-client.ts utils/ && pwd && ls -lrt
+    - cd /builds/royalprotocol/gameficap/gameficap-product && cp DevOps/.env.staging .env && pwd && ls -lrt
     - npm i --legacy-peer-deps
     #- npm run test
   script:
