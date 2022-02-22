@@ -38,7 +38,7 @@ frontend docker build and push:
   rules:
     - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'
   before_script:
-    - yum install jq tree unzip -y    
+    - yum install jq tree unzip -y
     - amazon-linux-extras install docker
     - aws --version
     - docker --version
