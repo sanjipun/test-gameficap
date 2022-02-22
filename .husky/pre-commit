@@ -15,7 +15,7 @@ yarn run check-format ||
     false;
 )
 
-yarn run check-ling || 
+yarn run check-lint || 
 (
     echo 'ESLint Check Failed';
     false;
