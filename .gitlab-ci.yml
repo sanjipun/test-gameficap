@@ -26,7 +26,7 @@ build front end code:
     - npm run build
   artifacts:
     paths:
-      - build
+      - .next
 
 frontend docker build and push:
   stage: frontend-docker-build-push
