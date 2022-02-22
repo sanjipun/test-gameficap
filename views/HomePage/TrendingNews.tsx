@@ -6,7 +6,7 @@ import { gql } from "apollo-boost";
 import React from "react";
 
 const TrendingNews = () => {
-  const { data, loading, error } = useQuery(QUERY);
+  const { data } = useQuery(QUERY);
   return (
     <div id="trending-news" className="bg-C4C4C4 bg-opacity-20 text-primary">
       <section className="py-14 max-w-1440 px-20 mx-auto">

@@ -15,6 +15,7 @@ module.exports = {
   plugins: ["react", "@typescript-eslint"],
   rules: {
     "react/no-unescaped-entities": 0,
+    "react/ jsx - props - no - spreading": false,
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/function-component-definition": [

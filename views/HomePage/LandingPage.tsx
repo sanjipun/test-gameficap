@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const LandingPage = () => {
-  const { data, loading, error } = useQuery(QUERY);
+  const { data } = useQuery(QUERY);
   return (
     <div id="landing-page" className="bg-FAFAFA">
       <section className="grid grid-cols-2 max-w-1440 mx-auto px-20 py-36">
