@@ -92,6 +92,7 @@ backend docker build and push :
       jq -r '.value')
     - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-backend-rc.$(date '+%Y.%m.%d-'$releaseval) .    
     - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-backend-rc.$(date '+%Y.%m.%d-'$releaseval)
+    
 
 Reload Staging:
   image: alpine
