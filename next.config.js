@@ -8,6 +8,6 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_WAGTAIL_URL: process.env.NEXT_PUBLIC_WAGTAIL_URL,
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

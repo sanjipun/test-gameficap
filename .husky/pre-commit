@@ -1,0 +1,30 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm test
+
+yarn run check-types || 
+(
+    echo 'Failed to Type Check';
+    false;
+)
+
+yarn run check-format || 
+(
+    echo 'Prettier Check Failed';
+    false;
+)
+
+yarn run check-ling || 
+(
+    echo 'ESLint Check Failed';
+    false;
+)
+
+yarn run build || 
+(
+    echo 'Build Failed'
+    false;
+)
+
+echo 'Committing successfully'

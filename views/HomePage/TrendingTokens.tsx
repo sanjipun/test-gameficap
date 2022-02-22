@@ -1,7 +1,7 @@
-import SectionTitle from '@components/SectionTitle';
-import SlickSlider from '@components/SlickSlider';
-import TokensCard from '@components/TokensCard';
-import React from 'react';
+import SectionTitle from "@components/SectionTitle";
+import SlickSlider from "@components/SlickSlider";
+import TokensCard from "@components/TokensCard";
+import React from "react";
 
 const TrendingTokens = () => {
   return (

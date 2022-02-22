@@ -1,5 +1,5 @@
-import React from 'react';
-import { Area, AreaChart } from 'recharts';
+import React from "react";
+import { Area, AreaChart } from "recharts";
 
 interface TokensCardProps {}
 
@@ -24,7 +24,8 @@ const TokensCard: React.FC<TokensCardProps> = () => {
           width={256}
           height={140}
           data={data}
-          margin={{ top: 40, right: 12, left: 12, bottom: 12 }}>
+          margin={{ top: 40, right: 12, left: 12, bottom: 12 }}
+        >
           <defs>
             <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
@@ -48,37 +49,37 @@ export default TokensCard;
 
 const data = [
   {
-    name: 'Page A',
+    name: "Page A",
     pv: 2400,
     amt: 2400,
   },
   {
-    name: 'Page B',
+    name: "Page B",
     pv: 1398,
     amt: 2210,
   },
   {
-    name: 'Page C',
+    name: "Page C",
     pv: 9800,
     amt: 2290,
   },
   {
-    name: 'Page D',
+    name: "Page D",
     pv: 3908,
     amt: 2000,
   },
   {
-    name: 'Page E',
+    name: "Page E",
     pv: 4800,
     amt: 2181,
   },
   {
-    name: 'Page F',
+    name: "Page F",
     pv: 3800,
     amt: 2500,
   },
   {
-    name: 'Page G',
+    name: "Page G",
     pv: 4300,
     amt: 2100,
   },

@@ -1,12 +1,12 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import SEO from '@components/SEO/SEO';
-import LandingPage from '@views/HomePage/LandingPage';
-import TrendingNews from '@views/HomePage/TrendingNews';
-import FavoriteTokens from '@views/HomePage/FavoriteTokens';
-import TrendingTokens from '@views/HomePage/TrendingTokens';
-import TopNFTs from '@views/HomePage/TopNFTs';
-import TrendingGames from '@views/HomePage/TrendingGames';
+import React from "react";
+import type { NextPage } from "next";
+import SEO from "@components/SEO/SEO";
+import LandingPage from "@views/HomePage/LandingPage";
+import TrendingNews from "@views/HomePage/TrendingNews";
+import FavoriteTokens from "@views/HomePage/FavoriteTokens";
+import TrendingTokens from "@views/HomePage/TrendingTokens";
+import TopNFTs from "@views/HomePage/TopNFTs";
+import TrendingGames from "@views/HomePage/TrendingGames";
 
 const HomePage: NextPage = () => {
   return (

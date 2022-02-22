@@ -10,7 +10,7 @@
 # .env file
 
 - add .env.development file
-- add WAGTAIL_URL=http://localhost:8000/graphql/
+- add NEXT_PUBLIC_WAGTAIL_URL=http://localhost:8000/graphql/
 
 # How to build for production
 
@@ -20,4 +20,4 @@
 # .env file
 
 - add .env.production file
-- add WAGTAIL_URL=http://ec2-3-237-8-137.compute-1.amazonaws.com/graphql/
+- add NEXT_PUBLIC_WAGTAIL_URL=http://ec2-3-237-8-137.compute-1.amazonaws.com/graphql/

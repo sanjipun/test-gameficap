@@ -1,7 +1,7 @@
-import SectionTitle from '@components/SectionTitle';
-import SlickSlider from '@components/SlickSlider';
-import TrendingCard from '@components/TrendingCard';
-import React from 'react';
+import SectionTitle from "@components/SectionTitle";
+import SlickSlider from "@components/SlickSlider";
+import TrendingCard from "@components/TrendingCard";
+import React from "react";
 
 const TopNFTs = () => {
   return (
@@ -30,79 +30,79 @@ const TOP_NFTS: {
   date: string;
 }[] = [
   {
-    title: 'NFT and a dummy text',
-    date: 'Feb 12, 2022',
+    title: "NFT and a dummy text",
+    date: "Feb 12, 2022",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],
   },
   {
-    title: 'NFT and a dummy text',
-    date: 'Feb 12, 2022',
+    title: "NFT and a dummy text",
+    date: "Feb 12, 2022",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],
   },
   {
-    title: 'NFT and a dummy text',
-    date: 'Feb 12, 2022',
+    title: "NFT and a dummy text",
+    date: "Feb 12, 2022",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],
   },
   {
-    title: 'NFT and a dummy text',
-    date: 'Feb 12, 2022',
+    title: "NFT and a dummy text",
+    date: "Feb 12, 2022",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],
   },
   {
-    title: 'NFT and a dummy text',
-    date: 'Feb 12, 2022',
+    title: "NFT and a dummy text",
+    date: "Feb 12, 2022",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],
   },
   {
-    title: 'NFT and a dummy text',
-    date: 'Feb 12, 2022',
+    title: "NFT and a dummy text",
+    date: "Feb 12, 2022",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],

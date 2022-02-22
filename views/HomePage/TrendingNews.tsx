@@ -1,9 +1,9 @@
-import { useQuery } from '@apollo/client';
-import SectionTitle from '@components/SectionTitle';
-import SlickSlider from '@components/SlickSlider';
-import TrendingCard from '@components/TrendingCard';
-import { gql } from 'apollo-boost';
-import React from 'react';
+import { useQuery } from "@apollo/client";
+import SectionTitle from "@components/SectionTitle";
+import SlickSlider from "@components/SlickSlider";
+import TrendingCard from "@components/TrendingCard";
+import { gql } from "apollo-boost";
+import React from "react";
 
 const TrendingNews = () => {
   const { data, loading, error } = useQuery(QUERY);

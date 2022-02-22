@@ -1,6 +1,6 @@
-import React from 'react';
-import { BsShareFill } from 'react-icons/bs';
-import TitleSlug from './TitleSlug';
+import React from "react";
+import { BsShareFill } from "react-icons/bs";
+import TitleSlug from "./TitleSlug";
 
 interface SlugTitleHeaderProps {
   title: string;

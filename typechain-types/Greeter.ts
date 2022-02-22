@@ -27,10 +27,7 @@ export interface GreeterInterface extends utils.Interface {
   encodeFunctionData(functionFragment: "setGreeting", values: [string]): string;
 
   decodeFunctionResult(functionFragment: "greet", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setGreeting",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "setGreeting", data: BytesLike): Result;
 
   events: {};
 }
@@ -53,9 +50,7 @@ export interface Greeter extends BaseContract {
     eventFilter?: TypedEventFilter<TEvent>
   ): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
+  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;

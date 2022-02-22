@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Tokens = () => {
   return <div>This is token page</div>;

@@ -1,12 +1,12 @@
-import { useQuery } from '@apollo/client';
-import { gql } from 'apollo-boost';
-import { useRouter } from 'next/router';
-import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
-import { CgProfile } from 'react-icons/cg';
-import { BsCalendar2DateFill } from 'react-icons/bs';
-import { AiFillTags } from 'react-icons/ai';
-import { FaRegCommentDots } from 'react-icons/fa';
+import { useQuery } from "@apollo/client";
+import { gql } from "apollo-boost";
+import { useRouter } from "next/router";
+import React from "react";
+import ReactHtmlParser from "react-html-parser";
+import { CgProfile } from "react-icons/cg";
+import { BsCalendar2DateFill } from "react-icons/bs";
+import { AiFillTags } from "react-icons/ai";
+import { FaRegCommentDots } from "react-icons/fa";
 
 const SlugTitleDetails = () => {
   const router = useRouter();

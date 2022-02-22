@@ -1,7 +1,7 @@
-import SectionTitle from '@components/SectionTitle';
-import SlickSlider from '@components/SlickSlider';
-import TrendingCard from '@components/TrendingCard';
-import React from 'react';
+import SectionTitle from "@components/SectionTitle";
+import SlickSlider from "@components/SlickSlider";
+import TrendingCard from "@components/TrendingCard";
+import React from "react";
 
 const TrendingGames = () => {
   return (
@@ -30,66 +30,66 @@ const TRENDING_GAMES: {
   date: string;
 }[] = [
   {
-    title: 'Game and a dummy text',
-    date: '$ 284',
+    title: "Game and a dummy text",
+    date: "$ 284",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],
   },
   {
-    title: 'Game and a dummy text',
-    date: '$ 284',
+    title: "Game and a dummy text",
+    date: "$ 284",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],
   },
   {
-    title: 'Game and a dummy text',
-    date: '$ 284',
+    title: "Game and a dummy text",
+    date: "$ 284",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],
   },
   {
-    title: 'Game and a dummy text',
-    date: '$ 284',
+    title: "Game and a dummy text",
+    date: "$ 284",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],
   },
   {
-    title: 'Game and a dummy text',
-    date: '$ 284',
+    title: "Game and a dummy text",
+    date: "$ 284",
     body: [
       {},
       {},
       {
         image: {
-          url: '/assets/image.svg',
+          url: "/assets/image.svg",
         },
       },
     ],

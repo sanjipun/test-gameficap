@@ -1,7 +1,7 @@
-import SectionTitle from '@components/SectionTitle';
-import React from 'react';
-import TokensCard from '@components/TokensCard';
-import SlickSlider from '@components/SlickSlider';
+import SectionTitle from "@components/SectionTitle";
+import React from "react";
+import TokensCard from "@components/TokensCard";
+import SlickSlider from "@components/SlickSlider";
 
 const FavoriteTokens = () => {
   return (

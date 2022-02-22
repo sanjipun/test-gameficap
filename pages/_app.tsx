@@ -1,13 +1,13 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
-import Toast from '@components/Toast/Toast';
-import NextNProgress from 'nextjs-progressbar';
-import Navbar from '@components/Navbar/Navbar';
-import Footer from '@components/Footer/Footer';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { ApolloProvider } from '@apollo/client';
-import client from '@utils/apollo-client';
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import Toast from "@components/Toast/Toast";
+import NextNProgress from "nextjs-progressbar";
+import Navbar from "@components/Navbar/Navbar";
+import Footer from "@components/Footer/Footer";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { ApolloProvider } from "@apollo/client";
+import client from "@utils/apollo-client";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           stopDelayMs={200}
           height={3}
           showOnShallow={true}
-          options={{ easing: 'ease', speed: 500, showSpinner: false }}
+          options={{ easing: "ease", speed: 500, showSpinner: false }}
         />
         <Navbar />
         <Component {...pageProps} />

@@ -1,7 +1,7 @@
-import React from 'react';
-import TrendingCard from '@components/TrendingCard';
-import { gql } from 'apollo-boost';
-import { useQuery } from '@apollo/client';
+import React from "react";
+import TrendingCard from "@components/TrendingCard";
+import { gql } from "apollo-boost";
+import { useQuery } from "@apollo/client";
 
 interface AllCardsProps {}
 
