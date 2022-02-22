@@ -38,6 +38,7 @@ frontend docker build and push:
   rules:
     - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'
   before_script:
+    - yum install jq tree unzip -y    
     - amazon-linux-extras install docker
     - aws --version
     - docker --version
@@ -55,7 +56,7 @@ frontend docker build and push:
       releaseval=$(curl --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" "https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_COUNT" 
       | 
       jq -r '.value')
-    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-frontend-rc.$(date '+%Y.%m.%d-'$releaseval) .
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-frontend-rc.$(date '+%Y.%m.%d-'$releaseval) -f DevOps/Dockerfile .
     - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-frontend-rc.$(date '+%Y.%m.%d-'$releaseval)
     - count=$((releaseval+1))
     - echo $count
