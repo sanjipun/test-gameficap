@@ -14,8 +14,7 @@ const HomePage: NextPage = () => (
       title="GameFi Prices, Charts and Market Capitalization | GameFiCap"
       description="Home for all blockchain games, prices, charts and market capitalization."
     />
-    Hello World
-    {/*<LandingPage />*/}
+    <LandingPage />
     {/*<FavoriteTokens />
     <TrendingNews />
     <TrendingTokens />
