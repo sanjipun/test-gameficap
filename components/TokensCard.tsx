@@ -1,9 +1,45 @@
 import React from "react";
 import { Area, AreaChart } from "recharts";
 
-interface TokensCardProps {}
+const data = [
+  {
+    name: "Page A",
+    pv: 2400,
+    amt: 2400,
+  },
+  {
+    name: "Page B",
+    pv: 1398,
+    amt: 2210,
+  },
+  {
+    name: "Page C",
+    pv: 9800,
+    amt: 2290,
+  },
+  {
+    name: "Page D",
+    pv: 3908,
+    amt: 2000,
+  },
+  {
+    name: "Page E",
+    pv: 4800,
+    amt: 2181,
+  },
+  {
+    name: "Page F",
+    pv: 3800,
+    amt: 2500,
+  },
+  {
+    name: "Page G",
+    pv: 4300,
+    amt: 2100,
+  },
+];
 
-const TokensCard: React.FC<TokensCardProps> = () => {
+const TokensCard = () => {
   return (
     <div className="flex justify-start items-center">
       <div className="bg-white text-primary w-64 border border-C9D2D8">
@@ -46,41 +82,3 @@ const TokensCard: React.FC<TokensCardProps> = () => {
 };
 
 export default TokensCard;
-
-const data = [
-  {
-    name: "Page A",
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    pv: 4300,
-    amt: 2100,
-  },
-];
