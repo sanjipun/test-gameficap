@@ -10,7 +10,7 @@ import { FaRegCommentDots } from "react-icons/fa";
 
 const SlugTitleDetails = () => {
   const router = useRouter();
-  const { loading, data, fetchMore } = useQuery(QUERY, {
+  const { data } = useQuery(QUERY, {
     variables: {
       slug: router.query.title,
     },

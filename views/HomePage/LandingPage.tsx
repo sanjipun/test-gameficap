@@ -1,5 +1,4 @@
 import { gql, useQuery } from "@apollo/client";
-import Link from "next/link";
 import React from "react";
 
 const LandingPage = () => {
