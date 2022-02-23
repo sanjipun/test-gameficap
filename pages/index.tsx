@@ -15,11 +15,11 @@ const HomePage: NextPage = () => (
       description="Home for all blockchain games, prices, charts and market capitalization."
     />
     <LandingPage />
-    {/*<FavoriteTokens />
+    <FavoriteTokens />
     <TrendingNews />
     <TrendingTokens />
     <TopNFTs />
-    <TrendingGames />*/}
+    <TrendingGames />
   </div>
 );
 

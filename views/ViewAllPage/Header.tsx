@@ -16,7 +16,7 @@ const TAGS: string[] = [
 const Header: React.FC<HeaderProps> = ({ title }) => (
   <div className="text-primary py-28 max-w-1440 mx-auto px-20">
     <div className="max-w-4xl mx-auto">
-      <ViewAllTitle>{(title as string).split("-").join(" ")}</ViewAllTitle>
+      <ViewAllTitle>{(title as string)?.split("-").join(" ")}</ViewAllTitle>
       <p className="max-w-622 mt-5 text-center mx-auto leading-6">
         We are constantly working on bringing you more reliable and convenient cryptocurrency
         services. Find out what we've been up to by reading our latest press releases and a dummy
