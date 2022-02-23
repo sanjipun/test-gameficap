@@ -24,10 +24,10 @@ build front end code:
     #- npm run test
   script:
     - npm run build
-    - pwd && ls -lrt .next/
+    - pwd && ls -lrt buildß/
   artifacts:
     paths:
-      - .next
+      - buildß
 
 frontend docker build and push:
   stage: frontend-docker-build-push
