@@ -24,7 +24,7 @@ build front end code:
     #- npm run test
   script:
     - npm run build
-    - pwd && ls -lrt .next/    
+    - pwd && ls -lrt .next/
   artifacts:
     paths:
       - .next
