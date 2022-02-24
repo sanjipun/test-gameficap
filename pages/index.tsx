@@ -18,8 +18,8 @@ const HomePage: NextPage = () => (
     />
     <LandingPage />
     <StarCharts />
-    <GameFiCapProjects />
     <FavoriteTokens />
+    <GameFiCapProjects />
     <TrendingNews />
     <TrendingTokens />
     <TopNFTs />
