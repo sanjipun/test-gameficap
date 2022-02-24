@@ -16,6 +16,7 @@ module.exports = {
         C4C4C4: "#C4C4C4",
         EAECEE: "#EAECEE",
         C9D2D8: "#C9D2D8",
+        E3E9EE: "#E3E9EE",
       },
       lineHeight: {
         56: "56px",

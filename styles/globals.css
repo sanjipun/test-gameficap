@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  th {
+    @apply text-right px-5 border-y border-C4C4C4 border-opacity-50 py-4 font-light;
+  }
+  td {
+    @apply px-5 text-right border-b border-black border-opacity-5 bg-C4C4C4 bg-opacity-15 font-light;
+  }
+}
+
 html,
 body {
   padding: 0;

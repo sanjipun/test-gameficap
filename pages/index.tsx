@@ -7,6 +7,8 @@ import FavoriteTokens from "@views/HomePage/FavoriteTokens";
 import TrendingTokens from "@views/HomePage/TrendingTokens";
 import TopNFTs from "@views/HomePage/TopNFTs";
 import TrendingGames from "@views/HomePage/TrendingGames";
+import StarCharts from "@views/HomePage/StarCharts";
+import GameFiCapProjects from "@views/HomePage/GameFiCapProjects";
 
 const HomePage: NextPage = () => (
   <div>
@@ -15,6 +17,8 @@ const HomePage: NextPage = () => (
       description="Home for all blockchain games, prices, charts and market capitalization."
     />
     <LandingPage />
+    <StarCharts />
+    <GameFiCapProjects />
     <FavoriteTokens />
     <TrendingNews />
     <TrendingTokens />
