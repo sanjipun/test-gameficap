@@ -9,6 +9,14 @@
   td {
     @apply px-5 text-right border-b border-black border-opacity-5 bg-C4C4C4 bg-opacity-15 font-light;
   }
+  .triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 30px solid white;
+    filter: drop-shadow(0.1px 0.1px 0.01rem gray);
+  }
 }
 
 html,

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface TrendingNewsCardProps {
@@ -26,7 +27,12 @@ const TrendingNewsCard: React.FC<TrendingNewsCardProps> = ({ data }) => {
             {data.categoryTag}
           </h1>
         </div>
-        <h1 className="mt-6">{data.title}</h1>
+        <div className="mt-5">
+          <Link href={`/trending-news/${data.title.split(" ").join("-").toLowerCase()}`}>
+            <a className="mt-6">{data.title}</a>
+          </Link>
+        </div>
+
         <h3 className="text-sm">{data.date}</h3>
       </div>
     </div>
