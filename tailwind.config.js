@@ -17,15 +17,24 @@ module.exports = {
         EAECEE: "#EAECEE",
         C9D2D8: "#C9D2D8",
         E3E9EE: "#E3E9EE",
+        F4F5F7: "#F4F5F7",
+        "94A2AB": "#94A2AB",
+        "3C454A": "#3C454A",
+        C0C0C0: "#C0C0C0",
+        F3F3F3: "#F3F3F3",
       },
       lineHeight: {
         56: "56px",
+        47: "47px",
       },
       height: {
         185: "185px",
       },
       opacity: {
         15: "0.15",
+      },
+      dropShadow: {
+        dropdown: "0px 1px 1px rgba(0, 0, 0, 0.3)",
       },
     },
   },

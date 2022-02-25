@@ -5,7 +5,7 @@ import React from "react";
 const LandingPage = () => {
   const { data } = useQuery(QUERY);
   return (
-    <div id="landing-page" className="bg-FAFAFA">
+    <div id="landing-page" className="bg-C4C4C4 bg-opacity-10">
       <section className="grid grid-cols-2 max-w-1440 mx-auto px-20 py-36">
         <section>
           <h1 className="text-5xl leading-56 text-primary">{data?.headers[0]?.title}</h1>

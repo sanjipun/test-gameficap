@@ -1,3 +1,4 @@
+import NavbarDropDown from "@components/NavbarDropDown";
 import Link from "next/link";
 import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -6,6 +7,7 @@ const Navbar = () => {
     <nav id="nav" className="max-w-1440 mx-auto px-20">
       <div className="hidden md:flex justify-between items-center h-24">
         <Link href="/">Logo</Link>
+        <NavbarDropDown />
         <div>
           {NAVBAR_DATA.map((navData, i: number) => (
             <Link key={i} href={navData.path}>
