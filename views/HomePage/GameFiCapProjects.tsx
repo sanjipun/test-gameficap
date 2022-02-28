@@ -9,8 +9,8 @@ const GameFiCapProjects = () => {
   const [currentTag, setCurrentTag] = React.useState<string>("Tokens");
   return (
     <section className="bg-C4C4C4 bg-opacity-15 text-primary leading-6">
-      <div className="max-w-1440 mx-auto px-20 py-36">
-        <SectionTitle title="Game Fi Cap Projects"></SectionTitle>
+      <div className="max-w-1440 mx-auto px-20 py-14">
+        <SectionTitle viewAll title="Game Fi Cap Projects"></SectionTitle>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper consec elementum
           augue scelerisque mi aliquet etiam urna.

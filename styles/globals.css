@@ -17,6 +17,9 @@
     border-bottom: 20px solid white;
     filter: drop-shadow(0.1px 0.1px 0.01rem gray);
   }
+  p {
+    @apply leading-6;
+  }
 }
 
 html,

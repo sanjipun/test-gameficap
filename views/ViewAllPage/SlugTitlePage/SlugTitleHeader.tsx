@@ -16,3 +16,4 @@ const SlugTitleHeader: React.FC<SlugTitleHeaderProps> = ({ title }) => {
 };
 
 export default SlugTitleHeader;
+``;

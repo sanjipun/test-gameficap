@@ -7,7 +7,6 @@ interface NavbarDropDownProps {
 
 const NavbarDropDown: React.FC<NavbarDropDownProps> = ({ children }) => {
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
-  console.log(isVisible);
   return (
     <div className={`relative ${isVisible ? "" : "overflow-hidden"}`}>
       <button onMouseOut={() => setIsVisible(false)} onMouseEnter={() => setIsVisible(true)}>

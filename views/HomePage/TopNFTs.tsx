@@ -7,7 +7,7 @@ const TopNFTs = () => {
   return (
     <div id="top-nfts" className="bg-C4C4C4 bg-opacity-20  text-primary">
       <section className="py-14 max-w-1440 px-20 mx-auto">
-        <SectionTitle title="Top NFTs"></SectionTitle>
+        <SectionTitle viewAll title="Top NFTs"></SectionTitle>
         <SlickSlider totalData={TOP_NFTS.length}>
           {TOP_NFTS.map((data, i) => (
             <TrendingCard key={i} data={data} />
