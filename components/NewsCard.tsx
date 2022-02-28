@@ -14,7 +14,7 @@ interface TrendingNewsCardProps {
   };
 }
 
-const TrendingNewsCard: React.FC<TrendingNewsCardProps> = ({ data }) => {
+const NewsCard: React.FC<TrendingNewsCardProps> = ({ data }) => {
   return (
     <div className="flex justify-start items-center">
       <div id="token-news-card" className="w-64 text-primary">
@@ -28,7 +28,7 @@ const TrendingNewsCard: React.FC<TrendingNewsCardProps> = ({ data }) => {
           </h1>
         </div>
         <div className="mt-5">
-          <Link href={`/trending-news/${data.title.split(" ").join("-").toLowerCase()}`}>
+          <Link href={`/news/trending-news/${data.title.split(" ").join("-").toLowerCase()}`}>
             <a className="mt-6">{data.title}</a>
           </Link>
         </div>
@@ -39,4 +39,4 @@ const TrendingNewsCard: React.FC<TrendingNewsCardProps> = ({ data }) => {
   );
 };
 
-export default TrendingNewsCard;
+export default NewsCard;

@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import SectionTitle from "@components/SectionTitle";
 import SlickSlider from "@components/SlickSlider";
-import TrendingCard from "@components/TrendingCard";
+import NewsCard from "@components/NewsCard";
 import { gql } from "apollo-boost";
 import React from "react";
 
@@ -13,7 +13,7 @@ const TrendingNews = () => {
         <SectionTitle viewAll title="Trending News"></SectionTitle>
         <SlickSlider totalData={data?.pages?.length}>
           {data?.pages?.map((data, i) => (
-            <TrendingCard key={i} data={data} />
+            <NewsCard key={i} data={data} />
           ))}
         </SlickSlider>
       </section>

@@ -1,6 +1,6 @@
 import SectionTitle from "@components/SectionTitle";
 import SlickSlider from "@components/SlickSlider";
-import TrendingCard from "@components/TrendingCard";
+import NewsCard from "@components/NewsCard";
 import React from "react";
 
 const TopNFTs = () => {
@@ -10,7 +10,7 @@ const TopNFTs = () => {
         <SectionTitle viewAll title="Top NFTs"></SectionTitle>
         <SlickSlider totalData={TOP_NFTS.length}>
           {TOP_NFTS.map((data, i) => (
-            <TrendingCard key={i} data={data} />
+            <NewsCard key={i} data={data} />
           ))}
         </SlickSlider>
       </section>
