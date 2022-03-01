@@ -1,9 +1,14 @@
+import GlossaryBody from "@views/GlossaryPage/GlossaryBody";
+import GlossaryHeader from "@views/GlossaryPage/GlossaryHeader";
 import React from "react";
 
-interface indexProps {}
-
-const index: React.FC<indexProps> = () => {
-  return <div>This is Glossary page</div>;
+const Glossary: React.FC = () => {
+  return (
+    <div id="glossary-page">
+      <GlossaryHeader />
+      <GlossaryBody />
+    </div>
+  );
 };
 
-export default index;
+export default Glossary;

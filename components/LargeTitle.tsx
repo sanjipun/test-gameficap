@@ -1,11 +1,11 @@
 import React from "react";
 
-interface ViewAllTitleProps {
+interface LargeTitleProps {
   children: React.ReactNode;
 }
 
-const ViewAllTitle: React.FC<ViewAllTitleProps> = ({ children }) => {
+const LargeTitle: React.FC<LargeTitleProps> = ({ children }) => {
   return <h1 className="text-5xl leading-56 text-primary capitalize text-center">{children}</h1>;
 };
 
-export default ViewAllTitle;
+export default LargeTitle;
