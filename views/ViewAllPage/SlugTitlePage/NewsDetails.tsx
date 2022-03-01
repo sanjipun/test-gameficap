@@ -8,7 +8,7 @@ import { BsCalendar2DateFill } from "react-icons/bs";
 import { AiFillTags } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 
-const SlugTitleDetails = () => {
+const NewsDetails = () => {
   const router = useRouter();
   const { loading, data, fetchMore } = useQuery(QUERY, {
     variables: {
@@ -17,7 +17,7 @@ const SlugTitleDetails = () => {
   });
 
   return (
-    <div className="max-w-1440 mx-auto px-20 pb-14 text-primary leading-6">
+    <div id="news-details" className="max-w-1440 mx-auto px-20 pb-14 text-primary leading-6">
       <div className="mt-14 flex">
         <h1 className="flex items-center mr-6">
           <CgProfile className="mr-1" /> {data?.page?.author}
@@ -40,7 +40,7 @@ const SlugTitleDetails = () => {
   );
 };
 
-export default SlugTitleDetails;
+export default NewsDetails;
 
 const QUERY = gql`
   query MyQuery($slug: String) {

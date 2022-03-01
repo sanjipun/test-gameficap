@@ -2,11 +2,11 @@ import Comments from "@components/Comments";
 import { COMMENTS } from "@constants/COMMENTS";
 import React from "react";
 
-interface SlugTitleCommentsProps {}
+interface NewsCommentListProps {}
 
-const SlugTitleComments: React.FC<SlugTitleCommentsProps> = () => {
+const NewsCommentList: React.FC<NewsCommentListProps> = () => {
   return (
-    <section className="bg-FAFAFA">
+    <section id="slug-title-comments" className="bg-FAFAFA">
       <div className="max-w-1440 mx-auto px-20 py-14">
         <h1 className="text-2xl text-primary mb-5 leading-47 font-semibold">Comments (14)</h1>
         {COMMENTS.map((comment) => (
@@ -18,4 +18,4 @@ const SlugTitleComments: React.FC<SlugTitleCommentsProps> = () => {
   );
 };
 
-export default SlugTitleComments;
+export default NewsCommentList;

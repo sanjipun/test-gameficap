@@ -1,9 +1,9 @@
 import SectionTitle from "@components/SectionTitle";
 import React from "react";
 
-const StarCharts: React.FC = () => {
+const StarChartsPage: React.FC = () => {
   return (
-    <div className="mt-6">
+    <div id="star-charts-page" className="mt-6">
       <SectionTitle title="Star Charts"></SectionTitle>
       <p>
         Non-Fungible Token (NFT) refers to digital assets with unique characteristics. Unlike
@@ -16,4 +16,4 @@ const StarCharts: React.FC = () => {
   );
 };
 
-export default StarCharts;
+export default StarChartsPage;

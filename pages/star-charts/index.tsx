@@ -1,5 +1,5 @@
 import BreadCrumbs from "@components/BreadCrumbs";
-import StarCharts from "@views/StarChartsPage/StarCharts";
+import StarCharts from "@views/StarChartsPage/StarChartsPage";
 import React from "react";
 
 interface StarChartsPageProps {}

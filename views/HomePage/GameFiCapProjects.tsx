@@ -8,7 +8,7 @@ const TAGS = [{ name: "Tokens" }, { name: "Games" }, { name: "NFTs" }];
 const GameFiCapProjects = () => {
   const [currentTag, setCurrentTag] = React.useState<string>("Tokens");
   return (
-    <section className="bg-C4C4C4 bg-opacity-15 text-primary leading-6">
+    <section id="game-fi-cap-projects" className="bg-C4C4C4 bg-opacity-15 text-primary leading-6">
       <div className="max-w-1440 mx-auto px-20 py-14">
         <SectionTitle viewAll title="Game Fi Cap Projects"></SectionTitle>
         <p>

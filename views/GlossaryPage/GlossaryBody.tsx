@@ -4,7 +4,7 @@ interface GlossaryBodyProps {}
 
 const GlossaryBody: React.FC<GlossaryBodyProps> = () => {
   return (
-    <div className="max-w-1440 mx-auto px-44">
+    <div id="glossary-body" className="max-w-1440 mx-auto px-44">
       {Array.apply(null, Array(5)).map((a, i) => (
         <GlossaryCard key={i} />
       ))}

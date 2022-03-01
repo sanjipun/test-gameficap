@@ -5,8 +5,11 @@ interface TokensSlugProps {}
 
 const TokensSlug: React.FC<TokensSlugProps> = () => {
   const router = useRouter();
-  console.log(router.query.slugtokens);
-  return <div className="max-w-1440 mx-auto px-20">{router.query.slugtokens}</div>;
+  return (
+    <div id="token-details-page" className="max-w-1440 mx-auto px-20">
+      {router.query.slugtokens}
+    </div>
+  );
 };
 
 export default TokensSlug;

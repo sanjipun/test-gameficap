@@ -5,7 +5,7 @@ import React from "react";
 
 const StarChartsSection = () => {
   return (
-    <div id="top-nfts" className="bg-C4C4C4 bg-opacity-20  text-primary">
+    <div id="star-charts-section" className="bg-C4C4C4 bg-opacity-20  text-primary">
       <section className="py-14 max-w-1440 px-20 mx-auto">
         <SectionTitle viewAll title="Star Charts"></SectionTitle>
         <SlickSlider totalData={5}>

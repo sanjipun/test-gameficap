@@ -16,7 +16,7 @@ const TAGS: string[] = [
 const Header: React.FC<HeaderProps> = ({ title }) => {
   const [activeCategory, setActiveCategory] = React.useState<string>("all");
   return (
-    <div className="text-primary py-28 max-w-1440 mx-auto px-20">
+    <div id="news-header" className="text-primary py-28 max-w-1440 mx-auto px-20">
       <div className="max-w-4xl mx-auto">
         <LargeTitle>{(title as string)?.split("-").join(" ")}</LargeTitle>
         <p className="max-w-622 mt-5 text-center mx-auto leading-6">
