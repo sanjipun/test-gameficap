@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     'home',
+    'blog',
     'search',
 
     'wagtail.contrib.forms',
@@ -51,7 +52,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'grapple',
-    # 'api',
     'graphene_django',
     'corsheaders',
 ]
@@ -184,7 +184,7 @@ BASE_URL = 'http://localhost:8000'
 # GraphQL Config:
 GRAPHENE = {"SCHEMA": "grapple.schema.schema"}
 GRAPPLE = {
-    "APPS": ["home"],
+    "APPS": ["home", "blog"],
 }
 
 CORS_ALLOW_HEADERS = ['*']

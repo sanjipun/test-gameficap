@@ -10,7 +10,7 @@ class HeaderAdmin(ModelAdmin):
     """Header admin."""
 
     model = Header
-    menu_label = "Headers"
+    menu_label = "Page Headers"
     menu_icon = "pick"
     menu_order = 290
     add_to_settings_menu = False

@@ -1,21 +1,17 @@
-from contextlib import redirect_stdout
+
 from django.db import models
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core import blocks
-from wagtail.core.models import Page
+
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail.admin.edit_handlers import (FieldPanel, StreamFieldPanel,MultiFieldPanel)
+from wagtail.admin.edit_handlers import (FieldPanel,MultiFieldPanel)
 from wagtail.images.edit_handlers import ImageChooserPanel
 from grapple.helpers import register_query_field
 from grapple.models import(
     GraphQLString,
-    GraphQLStreamfield,
-    GraphQLImage
+    GraphQLImage,
 )
 import graphene
 
-  
+
 @register_setting
 class SocialMediaSettings(BaseSetting):
     facebook = models.URLField(
@@ -53,6 +49,7 @@ class SocialMediaSettings(BaseSetting):
         GraphQLString("youtube"),
         GraphQLString('linkedin'),
     ]
+
 
 @register_query_field('header', 'headers', {
     "header_type": graphene.String(),
@@ -108,33 +105,7 @@ class Header(models.Model):
         return self.title
 
 
-# class Footer(models.Model):
-#     pass
 
-
-class NewsArticlePage(Page):
-    author = models.CharField(max_length=255)
-    date = models.DateField("Post date")
-    body = StreamField(
-        [
-            ("heading", blocks.CharBlock(classname="full title")),
-            ("paragraph", blocks.RichTextBlock()),
-            ("image", ImageChooserBlock()),
-        ]
-    )
-
-    content_panels = Page.content_panels + [
-        FieldPanel("author"),
-        FieldPanel("date"),
-        StreamFieldPanel("body"),
-    ]
-
-    graphql_fields = [
-        GraphQLString("heading"),
-        GraphQLString("date"),
-        GraphQLString("author"),
-        GraphQLStreamfield("body"),
-    ]
 
 
 
