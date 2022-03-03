@@ -76,7 +76,10 @@ const TokenHeader: React.FC<TokenHeaderProps> = () => {
 
 export default TokenHeader;
 
-const C4BG = ({ children }) => (
+type C4BGTypes = {
+  children: React.ReactNode;
+};
+const C4BG: React.FC<C4BGTypes> = ({ children }) => (
   <h1
     id="C4BG"
     className="mr-2 flex items-center bg-C4C4C4 bg-opacity-30 px-3 py-2 text-xs text-primary text-opacity-70 rounded-md"
