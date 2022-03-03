@@ -10,7 +10,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title, viewAll }) => {
     <div className="flex justify-between items-center">
       <h1 className="text-2xl text-primary mb-5">{title}</h1>
       {title !== "Game Fi Cap Projects" && viewAll && (
-        <Link href={title.split(" ").join("-").toLowerCase()}>View all</Link>
+        <Link href={`/${title.split(" ").join("-").toLowerCase()}`}>View all</Link>
       )}
     </div>
   );

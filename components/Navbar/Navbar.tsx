@@ -22,7 +22,7 @@ const Navbar = () => {
           />
           <AiOutlineSearch className="text-3xl mx-2 text-white" />
         </div>
-        <div className="bg-slate-500 text-white px-4 py-2 rounded-md">Connect Wallet</div>
+        <button className="bg-94A2AB text-white px-7 py-3 rounded-md">Connect Wallet</button>
       </div>
       <div className="h-24 flex md:hidden justify-between items-center">Mobile Nav</div>
     </nav>

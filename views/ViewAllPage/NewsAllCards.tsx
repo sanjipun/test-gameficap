@@ -1,7 +1,6 @@
 import React from "react";
 import NewsCard from "@components/NewsCard";
-import { gql } from "apollo-boost";
-import { useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 
 const QUERY = gql`
   query MyQuery {

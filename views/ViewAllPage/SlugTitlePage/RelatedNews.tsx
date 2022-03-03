@@ -1,7 +1,6 @@
-import { useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import SectionTitle from "@components/SectionTitle";
 import React from "react";
-import { gql } from "apollo-boost";
 import SlickSlider from "@components/SlickSlider";
 import TrendingNewsCard from "@components/NewsCard";
 
