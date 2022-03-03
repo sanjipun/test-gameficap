@@ -9,13 +9,17 @@ interface BreadCrumbsProps {
 const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ data }) => {
   return (
     <section id="breadcrumbs" className="flex items-center capitalize">
-      <IoIosHome /> <AiOutlineRight />{" "}
+      <IoIosHome /> <AiOutlineRight className="ml-2" />{" "}
       {data.length === 0
-        ? data.map((item, i: number) => <h1 key={i}>{item}</h1>)
-        : data.map((item, i: number) => (
-            <h1 key={i} className="flex items-center">
+        ? data.map((item, i: number) => (
+            <h1 key={i} className="ml-2">
               {item}
-              {i !== data.length - 1 && <AiOutlineRight />}
+            </h1>
+          ))
+        : data.map((item, i: number) => (
+            <h1 key={i} className="flex items-center ml-2">
+              {item}
+              {i !== data.length - 1 && <AiOutlineRight className="ml-2" />}
             </h1>
           ))}
     </section>

@@ -7,8 +7,8 @@ interface TokenButtonProps {
 const TokenButton: React.FC<TokenButtonProps> = ({ children }) => {
   return (
     <button
-      className="bg-C4C4C4 bg-opacity-30 ml-3 text-3C454A text-opacity-70 rounded-md border
-      border-C4C4C4 border-opacity-50 px-3 py-2"
+      className="bg-C4C4C4 bg-opacity-30 leading-6 ml-3 text-3C454A text-opacity-70 rounded-md border
+      border-C4C4C4 border-opacity-50 px-3 py-1"
     >
       {children}
     </button>

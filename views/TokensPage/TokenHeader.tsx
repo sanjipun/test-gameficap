@@ -9,18 +9,18 @@ interface TokenHeaderProps {}
 const TokenHeader: React.FC<TokenHeaderProps> = () => {
   const address = "0xdce27d41b4ff72b55a876c621f5a5fef8537c99d";
   return (
-    <div id="token-header" className="mt-6 text-primary">
+    <div id="token-header" className="mt-7 text-primary">
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           <img src="/assets/image.svg" className="w-20 h-20" />
-          <h1 className="text-5xl leading-56 ml-4">Royal Protocol</h1>
-          <h1 className="ml-3 text-3xl leading-35 text-white bg-C4C4C4 bg-opacity-40 px-3 py-1 rounded-md">
+          <h1 className="text-5xl leading-56 ml-4 font-bold">Royal Protocol</h1>
+          <h1 className="ml-3 text-3xl leading-35 pt-1 font-bold text-white bg-C4C4C4 bg-opacity-40 px-3 rounded-md">
             ROY
           </h1>
         </div>
         <div className="text-white">
-          <button className="px-7 py-3 bg-94A2AB rounded">BUY</button>
-          <button className="ml-3 px-7 py-3 bg-94A2AB rounded">EXCHANGE</button>
+          <button className="px-4 py-2 bg-94A2AB rounded">BUY</button>
+          <button className="ml-3 px-4 py-2 bg-94A2AB rounded">EXCHANGE</button>
         </div>
       </div>
       <div className="mt-4 flex justify-between items-center">
