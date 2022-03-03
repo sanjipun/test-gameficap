@@ -63,7 +63,7 @@ const TokenHeader: React.FC<TokenHeaderProps> = () => {
         <C4BG>
           <img src="/assets/image.svg" className="w-4 h-4" />{" "}
           <span className="font-bold ml-2">
-            {/*Binance Smart Chain (BEP20): <span className="text-black">{CensorChars(address)} </span>*/}
+            Binance Smart Chain (BEP20): <span className="text-black">{CensorChars(address)} </span>
           </span>
         </C4BG>
         <C4BG>
