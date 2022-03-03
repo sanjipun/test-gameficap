@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
 
-interface TitleSlugProps {
+interface NewsTitleProps {
   children: React.ReactNode;
 }
 
-const TitleSlug: React.FC<TitleSlugProps> = ({ children }) => {
-  return <h1 className="text-5xl leading-56 text-primary capitalize">{children}</h1>;
+const NewsTitle: React.FC<NewsTitleProps> = ({ children }) => {
+  return (
+    <h1 id="news-title" className="text-5xl leading-56 text-primary capitalize">
+      {children}
+    </h1>
+  );
 };
 
-export default TitleSlug;
+export default NewsTitle;

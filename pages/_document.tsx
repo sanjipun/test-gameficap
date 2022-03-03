@@ -1,5 +1,5 @@
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import { ReactElement } from 'react';
+import React, { ReactElement } from "react";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
 class NextDocument extends Document {
   render(): ReactElement {
@@ -7,14 +7,14 @@ class NextDocument extends Document {
       <Html lang="en-US">
         <Head>
           <meta charSet="UTF-8" />
-          {/*<link rel="shortcut icon" href="/assets/images/favicon.png" />*/}
-          {/*<link
+          {/* <link rel="shortcut icon" href="/assets/images/favicon.png" /> */}
+          {/* <link
             rel="preload"
             href="/assets/fonts/Eurostile.otf"
             as="font"
             crossOrigin="anonymous"
-          />*/}
-          {/*<link
+          /> */}
+          {/* <link
                         rel="preload"
                         href="/assets/fonts/BebasNeue/BebasNeuePro-Middle.woff2"
                         as="font"
@@ -25,7 +25,7 @@ class NextDocument extends Document {
                         href="/assets/fonts/OpenSans/open-sans-v20-latin-regular.woff2"
                         as="font"
                         crossOrigin="anonymous"
-                    />*/}
+                    /> */}
         </Head>
         <body>
           <Main />

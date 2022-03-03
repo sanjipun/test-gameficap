@@ -1,6 +1,7 @@
-import Link from 'next/link';
-import React from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
+import NavbarDropDown from "@components/NavbarDropDown";
+import Link from "next/link";
+import React from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 const Navbar = () => {
   return (
     <nav id="nav" className="max-w-1440 mx-auto px-20">
@@ -21,7 +22,7 @@ const Navbar = () => {
           />
           <AiOutlineSearch className="text-3xl mx-2 text-white" />
         </div>
-        <div className="bg-slate-500 text-white px-4 py-2 rounded-md">Connect Wallet</div>
+        <button className="bg-94A2AB text-white px-7 py-3 rounded-md">Connect Wallet</button>
       </div>
       <div className="h-24 flex md:hidden justify-between items-center">Mobile Nav</div>
     </nav>
@@ -32,23 +33,23 @@ export default Navbar;
 
 const NAVBAR_DATA: { name: string; path: string }[] = [
   {
-    name: 'Tokens',
-    path: '/tokens',
+    name: "Tokens",
+    path: "/tokens",
   },
   {
-    name: 'NFTs',
-    path: '/nfts',
+    name: "NFTs",
+    path: "/nfts",
   },
   {
-    name: 'News',
-    path: '/news',
+    name: "News",
+    path: "/news",
   },
   {
-    name: 'Games',
-    path: '/games',
+    name: "Games",
+    path: "/games",
   },
   {
-    name: 'Support',
-    path: '/support',
+    name: "Support",
+    path: "/support",
   },
 ];

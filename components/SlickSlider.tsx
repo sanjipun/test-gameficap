@@ -1,5 +1,5 @@
-import Slider from 'react-slick';
-import React from 'react';
+import Slider from "react-slick";
+import React from "react";
 
 interface SlickSliderProps {
   children: React.ReactNode;

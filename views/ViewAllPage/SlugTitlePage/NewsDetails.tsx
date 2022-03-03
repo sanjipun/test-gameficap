@@ -1,23 +1,22 @@
-import { useQuery } from '@apollo/client';
-import { gql } from 'apollo-boost';
-import { useRouter } from 'next/router';
-import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
-import { CgProfile } from 'react-icons/cg';
-import { BsCalendar2DateFill } from 'react-icons/bs';
-import { AiFillTags } from 'react-icons/ai';
-import { FaRegCommentDots } from 'react-icons/fa';
+import { gql, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
+import React from "react";
+import ReactHtmlParser from "react-html-parser";
+import { CgProfile } from "react-icons/cg";
+import { BsCalendar2DateFill } from "react-icons/bs";
+import { AiFillTags } from "react-icons/ai";
+import { FaRegCommentDots } from "react-icons/fa";
 
-const SlugTitleDetails = () => {
+const NewsDetails = () => {
   const router = useRouter();
   const { loading, data, fetchMore } = useQuery(QUERY, {
     variables: {
       slug: router.query.title,
     },
   });
-  console.log(data);
+
   return (
-    <div className="max-w-1440 mx-auto px-20 text-primary leading-6">
+    <div id="news-details" className="max-w-1440 mx-auto px-20 pb-14 text-primary leading-6">
       <div className="mt-14 flex">
         <h1 className="flex items-center mr-6">
           <CgProfile className="mr-1" /> {data?.page?.author}
@@ -40,7 +39,7 @@ const SlugTitleDetails = () => {
   );
 };
 
-export default SlugTitleDetails;
+export default NewsDetails;
 
 const QUERY = gql`
   query MyQuery($slug: String) {

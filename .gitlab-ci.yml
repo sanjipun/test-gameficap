@@ -5,92 +5,94 @@ variables:
   APP_NAME: royalprotocol-ecr
   DOCKER_HOST: tcp://docker:2375
 
-stages: 
-  - frontend-code-build   
-  - frontend-docker-build-push   
+stages:
+  - frontend-code-build
+  - frontend-docker-build-push
   - backend-docker-build-push
   - reload-staging
   - release-to-production
 
 build front end code:
   image: node:16.13.1
-  stage: frontend-code-build   
+  stage: frontend-code-build
   rules:
     - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'
-  before_script: 
-  ## Add private key from variable so we can rsync build to server
-    - cd /builds/royalprotocol/gameficap/gameficap-product && cp DevOps/apollo-client.ts utils/ && pwd && ls -lrt
+  before_script:
+    ## Add private key from variable so we can rsync build to server
+    - cd /builds/royalprotocol/gameficap/gameficap-product && cp DevOps/.env.staging .env && pwd && ls -lrt
     - npm i --legacy-peer-deps
     #- npm run test
   script:
     - npm run build
+    - pwd && ls -lrt build/
   artifacts:
     paths:
       - build
 
 frontend docker build and push:
   stage: frontend-docker-build-push
-  image: 
+  image:
     name: amazon/aws-cli
     entrypoint: [""]
   services:
     - docker:dind
   rules:
-    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'    
+    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'
   before_script:
+    - yum install jq tree unzip -y
     - amazon-linux-extras install docker
     - aws --version
     - docker --version
   script:
-    - pwd && ls -lrt && ls -la && cd /root && mkdir .aws 
-    - cd /root/.aws && echo -e "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\nAWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" > credentials 
+    - pwd && ls -lrt && ls -la && cd /root && mkdir .aws
+    - cd /root/.aws && echo -e "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\nAWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" > credentials
     #&& cat credentials
     - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" && export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
     #- echo $AWS_ACCESS_KEY_ID && echo $AWS_SECRET_ACCESS_KEY
     - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com
     - cd /builds/royalprotocol/gameficap/gameficap-product && pwd && ls -lrt && cp DevOps/nginx.conf .
-    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-frontend-staging -f DevOps/Dockerfile .  
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-frontend-staging -f DevOps/Dockerfile .
     - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-frontend-staging
-    - > 
+    - >
       releaseval=$(curl --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" "https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_COUNT" 
       | 
       jq -r '.value')
-    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-frontend-rc.$(date '+%Y.%m.%d-'$releaseval) .    
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-frontend-rc.$(date '+%Y.%m.%d-'$releaseval) -f DevOps/Dockerfile .
     - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-frontend-rc.$(date '+%Y.%m.%d-'$releaseval)
     - count=$((releaseval+1))
     - echo $count
     - >
       curl --request PUT --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_COUNT --form "value=$count"
 
-backend docker build and push :
+backend docker build and push:
   stage: backend-docker-build-push
-  image: 
+  image:
     name: amazon/aws-cli
     entrypoint: [""]
   services:
     - docker:dind
   rules:
-    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'    
+    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'
   before_script:
     - yum install jq tree unzip -y
-    - amazon-linux-extras install docker 
+    - amazon-linux-extras install docker
     - aws --version
     - docker --version
   script:
-    - pwd && ls -lrt && ls -la && cd /root && mkdir .aws 
-    - cd /root/.aws && echo -e "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\nAWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" > credentials 
+    - pwd && ls -lrt && ls -la && cd /root && mkdir .aws
+    - cd /root/.aws && echo -e "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\nAWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" > credentials
     #&& cat credentials
     - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" && export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
     #- echo $AWS_ACCESS_KEY_ID && echo $AWS_SECRET_ACCESS_KEY
     - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com
-    - cd /builds/royalprotocol/gameficap/gameficap-product/gameficap && ls && pwd && tree && cp compose/local/web/Dockerfile . 
+    - cd /builds/royalprotocol/gameficap/gameficap-product/gameficap && ls && pwd && tree && cp compose/local/web/Dockerfile .
     - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-backend-staging .
     - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-backend-staging
-    - > 
+    - >
       releaseval=$(curl --header "PRIVATE-TOKEN: glpat-sW8_AZAyUXHte-98BCnc" "https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_COUNT" 
       | 
       jq -r '.value')
-    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-backend-rc.$(date '+%Y.%m.%d-'$releaseval) .    
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-backend-rc.$(date '+%Y.%m.%d-'$releaseval) .
     - docker push $DOCKER_REGISTRY/$APP_NAME:$PROJECT_NAME-prod-backend-rc.$(date '+%Y.%m.%d-'$releaseval)
 
 Reload Staging:
@@ -99,7 +101,7 @@ Reload Staging:
   rules:
     - if: '$CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE == "push"'
   script:
-    - 'command -v ssh-agent >/dev/null || ( apk add openssh rsync )'
+    - "command -v ssh-agent >/dev/null || ( apk add openssh rsync )"
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
@@ -109,20 +111,20 @@ Reload Staging:
 Release to Production:
   image: alpine
   stage: release-to-production
-  rules: 
+  rules:
     - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "push"'
     - when: manual
   before_script:
     - apk add jq curl
   script:
-    - 'command -v ssh-agent >/dev/null || ( apk add openssh rsync )'
+    - "command -v ssh-agent >/dev/null || ( apk add openssh rsync )"
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY_STAGING"
     - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 600 ~/.ssh
-    - > 
+    - >
       currentreltag=$(curl --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "https://gitlab.com/api/v4/projects/33343648/variables/PROD_RELEASE_CURRENT_TAG" 
       | 
       jq -r '.value')
-    - ssh -o "StrictHostKeyChecking no" ubuntu@18.207.4.91 "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com && cd /var/local/gameficap-product && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$currentreltag && cp docker-compose-traefik-template.txt docker-compose.yml && sed -i 's/<DOCKER_IMAGE_HERE>/$currentreltag/g' docker-compose.yml && docker-compose up -d"    
+    - ssh -o "StrictHostKeyChecking no" ubuntu@18.207.4.91 "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 166742359725.dkr.ecr.us-east-1.amazonaws.com && cd /var/local/gameficap-product && docker-compose down && docker pull $DOCKER_REGISTRY/$APP_NAME:$currentreltag && cp docker-compose-traefik-template.txt docker-compose.yml && sed -i 's/<DOCKER_IMAGE_HERE>/$currentreltag/g' docker-compose.yml && docker-compose up -d"

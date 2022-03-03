@@ -1,19 +1,18 @@
-import { useQuery } from '@apollo/client';
-import SectionTitle from '@components/SectionTitle';
-import SlickSlider from '@components/SlickSlider';
-import TrendingCard from '@components/TrendingCard';
-import { gql } from 'apollo-boost';
-import React from 'react';
+import { gql, useQuery } from "@apollo/client";
+import SectionTitle from "@components/SectionTitle";
+import SlickSlider from "@components/SlickSlider";
+import NewsCard from "@components/NewsCard";
+import React from "react";
 
 const TrendingNews = () => {
-  const { data, loading, error } = useQuery(QUERY);
+  const { data } = useQuery(QUERY);
   return (
     <div id="trending-news" className="bg-C4C4C4 bg-opacity-20 text-primary">
       <section className="py-14 max-w-1440 px-20 mx-auto">
-        <SectionTitle title="Trending News"></SectionTitle>
+        <SectionTitle viewAll title="Trending News"></SectionTitle>
         <SlickSlider totalData={data?.pages?.length}>
           {data?.pages?.map((data, i) => (
-            <TrendingCard key={i} data={data} />
+            <NewsCard key={i} data={data} />
           ))}
         </SlickSlider>
       </section>
