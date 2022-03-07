@@ -30,7 +30,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Gilroy-Bold;
+  font-family: Gilroy;
 }
 
 a {
@@ -57,27 +57,27 @@ a {
 }
 
 @font-face {
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy";
   font-weight: 400;
   src: url("/fonts/Gilroy-Regular.ttf");
 }
 @font-face {
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy";
   font-weight: 700;
   src: url("/fonts/Gilroy-Bold.ttf");
 }
 @font-face {
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy";
   font-weight: 300;
   src: url("/fonts/Gilroy-Light.ttf");
 }
 @font-face {
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy";
   font-weight: 500;
   src: url("/fonts/Gilroy-Medium.ttf");
 }
 @font-face {
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy";
   font-weight: 900;
   src: url("/fonts/Gilroy-Heavy.ttf");
 }
