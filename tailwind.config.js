@@ -22,7 +22,7 @@ module.exports = {
         "3C454A": "#3C454A",
         C0C0C0: "#C0C0C0",
         F3F3F3: "#F3F3F3",
-        F9F9F9: "#F9F9F9"
+        F9F9F9: "#F9F9F9",
       },
       lineHeight: {
         56: "56px",
@@ -31,7 +31,7 @@ module.exports = {
       },
       height: {
         185: "185px",
-        '1px': '1px'
+        "1px": "1px",
       },
       opacity: {
         15: "0.15",
