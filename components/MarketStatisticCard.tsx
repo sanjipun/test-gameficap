@@ -6,7 +6,7 @@ const MarketStatisticCard: React.FC<MarketStatisticCardProps> = () => {
   return (
     <div className="p-2 bg-FAFAFA border border-F4F5F7 rounded-lg">
       <div className="flex">
-        <img className="w-5 h-5" src="/assets/image.svg" />
+        <img className="w-5 h-5" src="/assets/Image.svg" />
         <span className="ml-1 text-sm">ROY Price </span>
       </div>
       <div className="mt-5 w-full flex justify-between">

@@ -19,41 +19,41 @@ const TOKEN_INFO: { name: string; value: number; image: string }[] = [
   {
     name: "Market Cap",
     value: 123123123,
-    image: "/assets/image.svg",
+    image: "/assets/Image.svg",
   },
   {
     name: "Volume (24h)",
     value: 1000000,
-    image: "/assets/image.svg",
+    image: "/assets/Image.svg",
   },
   {
     name: "Liquidity",
     value: 123123123,
-    image: "/assets/image.svg",
+    image: "/assets/Image.svg",
   },
   {
     name: "Circulating Supply",
     value: 18964575,
-    image: "/assets/image.svg",
+    image: "/assets/Image.svg",
   },
   {
     name: "Fully Diluted Market Cap",
     value: 818425131000,
-    image: "/assets/image.svg",
+    image: "/assets/Image.svg",
   },
   {
     name: "Volume/Market Cap",
     value: 0.0278,
-    image: "/assets/image.svg",
+    image: "/assets/Image.svg",
   },
   {
     name: "Liquidity/Market Cap",
     value: 0.15,
-    image: "/assets/image.svg",
+    image: "/assets/Image.svg",
   },
   {
     name: "Total Supply",
     value: 21000000,
-    image: "/assets/image.svg",
+    image: "/assets/Image.svg",
   },
 ];

@@ -45,7 +45,7 @@ const TokensCard = () => {
       <div className="bg-white text-primary w-64 border border-C9D2D8">
         <div className="flex justify-between items-center p-3">
           <div className="flex items-center">
-            <img src="/assets/image.svg" className="w-12 h-12 mr-3" />
+            <img src="/assets/Image.svg" className="w-12 h-12 mr-3" />
             <div>
               <h1>Axie Infinity</h1>
               <span className="text-sm font-light">ROY/AXS</span>

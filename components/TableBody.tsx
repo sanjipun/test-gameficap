@@ -25,7 +25,7 @@ const TableBody: React.FC<TableBodyProps> = ({ tokenData }) => {
       </td>
       <td>{tokenData.rank}</td>
       <td className="flex h-14 items-center">
-        <img src="/assets/image.svg" className="mr-2 w-5 h-5" />
+        <img src="/assets/Image.svg" className="mr-2 w-5 h-5" />
         {tokenData.tokenName} {tokenData.tokenSymbol}
       </td>
       <td>{tokenData.tokenPrice}</td>

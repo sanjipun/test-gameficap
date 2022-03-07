@@ -12,7 +12,7 @@ const TokenHeader: React.FC<TokenHeaderProps> = () => {
     <div id="token-header" className="max-w-1440 mx-auto px-20 mt-7 text-primary">
       <div className="flex justify-between items-center">
         <div className="flex items-center">
-          <img src="/assets/image.svg" className="w-20 h-20" />
+          <img src="/assets/Image.svg" className="w-20 h-20" />
           <h1 className="text-5xl leading-56 ml-4 font-bold">Royal Protocol</h1>
           <h1 className="ml-3 text-3xl leading-35 pt-1 font-bold text-white bg-C4C4C4 bg-opacity-40 px-3 rounded-md">
             ROY
@@ -61,7 +61,7 @@ const TokenHeader: React.FC<TokenHeaderProps> = () => {
       </div>
       <div className="flex items-center mt-4">
         <C4BG>
-          <img src="/assets/image.svg" className="w-4 h-4" />{" "}
+          <img src="/assets/Image.svg" className="w-4 h-4" />{" "}
           <span className="font-bold ml-2">
             Binance Smart Chain (BEP20): <span className="text-black">{CensorChars(address)} </span>
           </span>
