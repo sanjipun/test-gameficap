@@ -9,6 +9,7 @@ from wagtail.core.models import Page
 from grapple.registry import registry
 from grapple.settings import grapple_settings
 from grapple.types.streamfield import StreamFieldInterface
+from django.core.exceptions import FieldDoesNotExist
 
 
 streamfield_types = []
@@ -100,10 +101,19 @@ def register_query_field(
                 qs = cls.objects
                 if issubclass(cls, Page):
                     qs = qs.live().public()
-                    qs = qs.filter(**kwargs)
+                    model_fields = dict()
+                    for key, value in kwargs.items():
+                        try:
+                            field = cls._meta.get_field(key)
+                            print(field)
+                            model_fields.update({key: value})
+                        except FieldDoesNotExist:
+                            print(f"{key} does not exist")
+                       
+                    qs = qs.filter(**model_fields)
                     if "order" not in kwargs:
                         kwargs["order"] = "-first_published_at"                
-                return resolve_queryset(qs.all(), info, **kwargs)
+                return resolve_queryset(qs, info, **kwargs)
 
             # Create schema and add resolve methods
             schema = type(cls.__name__ + "Query", (), {})

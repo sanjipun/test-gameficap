@@ -1,13 +1,14 @@
 from django.db import models
 from django import forms
+from django.db.models.aggregates import Count
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
 from wagtail.core.models import Page
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.admin.edit_handlers import (FieldPanel, StreamFieldPanel,MultiFieldPanel)
 from wagtail.images.edit_handlers import ImageChooserPanel
-# from grapple.helpers import register_query_field
 from blog.helpers import register_query_field
+
 from grapple.helpers import register_paginated_query_field
 from grapple.models import(
     GraphQLString,
@@ -15,13 +16,16 @@ from grapple.models import(
     GraphQLImage,
     GraphQLTag,
     GraphQLForeignKey,
-    GraphQLCollection
+    GraphQLCollection,
+    GraphQLPage,
+    GraphQLBoolean
 )
 from wagtail.snippets.models import register_snippet
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TagBase, ItemBase
 import graphene
+import datetime
 
 
 @register_snippet
@@ -54,7 +58,7 @@ class TaggedArticlePage(ItemBase):
     "article", query_params= {
         "id": graphene.Int(),
         "slug": graphene.String(),
-        "categories": graphene.Int()
+        "categories": graphene.Int(),
         }
 )
 class ArticlePage(Page):
@@ -69,6 +73,17 @@ class ArticlePage(Page):
             ("image", ImageChooserBlock()),
         ]
     )
+
+    @property
+    def related_articles(self, max_items=5):
+        tags = self.tags.all()
+ 
+        matches = ArticlePage.objects.filter(tags__in=tags).live().annotate(Count('title'))
+        matches = matches.exclude(pk=self.pk)
+ 
+        related = matches.order_by('-title__count')
+        return related[:max_items]
+
 
     content_panels = Page.content_panels + [
         FieldPanel("author"),
@@ -94,6 +109,11 @@ class ArticlePage(Page):
             "categories", 
             "blog.ArticleCategory"
         ),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            "related_articles",
+            "blog.ArticlePage"
+        )
     
     ]
 
