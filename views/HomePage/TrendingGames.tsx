@@ -37,7 +37,7 @@ const TRENDING_GAMES: {
       {},
       {
         image: {
-          url: "/assets/image.svg",
+          url: "/assets/Image.svg",
         },
       },
     ],
@@ -50,7 +50,7 @@ const TRENDING_GAMES: {
       {},
       {
         image: {
-          url: "/assets/image.svg",
+          url: "/assets/Image.svg",
         },
       },
     ],
@@ -63,7 +63,7 @@ const TRENDING_GAMES: {
       {},
       {
         image: {
-          url: "/assets/image.svg",
+          url: "/assets/Image.svg",
         },
       },
     ],
@@ -76,7 +76,7 @@ const TRENDING_GAMES: {
       {},
       {
         image: {
-          url: "/assets/image.svg",
+          url: "/assets/Image.svg",
         },
       },
     ],
@@ -89,7 +89,7 @@ const TRENDING_GAMES: {
       {},
       {
         image: {
-          url: "/assets/image.svg",
+          url: "/assets/Image.svg",
         },
       },
     ],

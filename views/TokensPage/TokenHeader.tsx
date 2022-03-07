@@ -9,18 +9,18 @@ interface TokenHeaderProps {}
 const TokenHeader: React.FC<TokenHeaderProps> = () => {
   const address = "0xdce27d41b4ff72b55a876c621f5a5fef8537c99d";
   return (
-    <div id="token-header" className="mt-6 text-primary">
+    <div id="token-header" className="max-w-1440 mx-auto px-20 mt-7 text-primary">
       <div className="flex justify-between items-center">
         <div className="flex items-center">
-          <img src="/assets/image.svg" className="w-20 h-20" />
-          <h1 className="text-5xl leading-56 ml-4">Royal Protocol</h1>
-          <h1 className="ml-3 text-3xl leading-35 text-white bg-C4C4C4 bg-opacity-40 px-3 py-1 rounded-md">
+          <img src="/assets/Image.svg" className="w-20 h-20" />
+          <h1 className="text-5xl leading-56 ml-4 font-bold">Royal Protocol</h1>
+          <h1 className="ml-3 text-3xl leading-35 pt-1 font-bold text-white bg-C4C4C4 bg-opacity-40 px-3 rounded-md">
             ROY
           </h1>
         </div>
         <div className="text-white">
-          <button className="px-7 py-3 bg-94A2AB rounded">BUY</button>
-          <button className="ml-3 px-7 py-3 bg-94A2AB rounded">EXCHANGE</button>
+          <button className="px-4 py-2 bg-94A2AB rounded">BUY</button>
+          <button className="ml-3 px-4 py-2 bg-94A2AB rounded">EXCHANGE</button>
         </div>
       </div>
       <div className="mt-4 flex justify-between items-center">
@@ -61,7 +61,7 @@ const TokenHeader: React.FC<TokenHeaderProps> = () => {
       </div>
       <div className="flex items-center mt-4">
         <C4BG>
-          <img src="/assets/image.svg" className="w-4 h-4" />{" "}
+          <img src="/assets/Image.svg" className="w-4 h-4" />{" "}
           <span className="font-bold ml-2">
             Binance Smart Chain (BEP20): <span className="text-black">{CensorChars(address)} </span>
           </span>
@@ -76,7 +76,10 @@ const TokenHeader: React.FC<TokenHeaderProps> = () => {
 
 export default TokenHeader;
 
-const C4BG = ({ children }) => (
+type C4BGTypes = {
+  children: React.ReactNode;
+};
+const C4BG: React.FC<C4BGTypes> = ({ children }) => (
   <h1
     id="C4BG"
     className="mr-2 flex items-center bg-C4C4C4 bg-opacity-30 px-3 py-2 text-xs text-primary text-opacity-70 rounded-md"

@@ -5,7 +5,7 @@ const Footer = () => {
     <div id="footer" className="bg-EAECEE text-primary">
       <footer className="max-w-1440 mx-auto px-20 grid grid-cols-5 py-16">
         <div className="flex justify-center items-start text-2xl">
-          <img src="/assets/image.svg" className="w-10 h-10 mr-2" /> Game Fi Cap
+          <img src="/assets/Image.svg" className="w-10 h-10 mr-2" /> Game Fi Cap
         </div>
         <div>
           <h1>Company</h1>
