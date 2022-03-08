@@ -10,8 +10,8 @@ const TrendingNews = () => {
     <div id="trending-news" className="bg-C4C4C4 bg-opacity-20 text-primary">
       <section className="py-14 max-w-1440 px-20 mx-auto">
         <SectionTitle viewAll title="Trending News"></SectionTitle>
-        <SlickSlider totalData={data?.pages?.length}>
-          {data?.pages?.map((data, i) => (
+        <SlickSlider totalData={data?.articles?.length}>
+          {data?.articles?.map((data, i) => (
             <NewsCard key={i} data={data} />
           ))}
         </SlickSlider>
@@ -19,24 +19,16 @@ const TrendingNews = () => {
     </div>
   );
 };
-
 export default TrendingNews;
 
 const QUERY = gql`
   query MyQuery {
-    pages {
-      ... on NewsArticlePage {
-        slug
-        title
-        date
-        body {
-          ... on ImageChooserBlock {
-            image {
-              url
-            }
-          }
-        }
-      }
+    articles(categories: 1) {
+      id
+      title
+      slug
+      author
+      date
     }
   }
 `;

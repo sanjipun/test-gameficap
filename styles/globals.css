@@ -55,7 +55,9 @@ a {
 .slick-next:before {
   color: black !important;
 }
-
+.slick-list > div {
+  margin-left: 0;
+}
 @font-face {
   font-family: "Gilroy";
   font-weight: 400;
