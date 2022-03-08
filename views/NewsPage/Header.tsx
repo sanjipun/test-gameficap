@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import LargeTitle from "@components/LargeTitle";
 import Tags from "@components/Tags";
+import { useTag } from "@store/tag.store";
 import React from "react";
 
 interface HeaderProps {
@@ -16,8 +17,9 @@ const QUERY = gql`
     }
   }
 `;
+
 const Header: React.FC<HeaderProps> = ({ title }) => {
-  const [activeCategory, setActiveCategory] = React.useState<string>("all");
+  const { activeTag, setActiveTag } = useTag();
   const { data } = useQuery(QUERY);
 
   return (
@@ -34,8 +36,8 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
             ?.filter((tag: { name: string }) => tag.name !== undefined)
             .map((tag: { name: string }) => (
               <Tags
-                onClick={(e: string) => setActiveCategory(e)}
-                active={activeCategory === tag.name}
+                onClick={(e: string) => setActiveTag(e)}
+                active={activeTag === tag.name}
                 key={tag.name}
               >
                 {tag?.name}
