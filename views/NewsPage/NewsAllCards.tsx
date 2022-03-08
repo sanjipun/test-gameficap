@@ -54,9 +54,9 @@ const AllCards = () => {
   return (
     <div id="news-all-cards" className="bg-C4C4C4 bg-opacity-20 py-28">
       <div className="grid grid-cols-4 gap-10 max-w-1440 mx-auto px-20">
-        {filteredData?.map((value: any) => (
-          <NewsCard key={value.title} data={value} />
-        ))}
+        {activeTag == "all"
+          ? data?.articles?.map((value: any) => <NewsCard key={value.title} data={value} />)
+          : filteredData?.map((value: any) => <NewsCard key={value.title} data={value} />)}
       </div>
     </div>
   );
