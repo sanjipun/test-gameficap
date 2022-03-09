@@ -2,5 +2,6 @@ Django>=3.2,<3.3
 wagtail>=2.15,<2.16
 wagtail-grapple==0.12.0 
 django-cors-headers==3.11.0 
+django-comments-xtd==2.9.5
 django-taggit
 psycopg2-binary
