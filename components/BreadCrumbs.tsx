@@ -8,7 +8,10 @@ interface BreadCrumbsProps {
 
 const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ data }) => {
   return (
-    <section id="breadcrumbs" className="max-w-1440 mx-auto px-20 flex items-center capitalize">
+    <section
+      id="breadcrumbs"
+      className="max-w-1440 mx-auto px-20 py-8 flex items-center capitalize"
+    >
       <IoIosHome /> <AiOutlineRight className="ml-2" />{" "}
       {data.length === 0
         ? data.map((item, i: number) => (

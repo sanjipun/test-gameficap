@@ -1,10 +1,10 @@
 import React from "react";
-import NewsDetails from "@views/NewsPage/SlugTitlePage/NewsDetails";
-import NewsHeader from "@views/NewsPage/SlugTitlePage/NewsHeader";
+import NewsDetails from "@views/NewsPage/SingleNewsPage/NewsDetails";
+import NewsHeader from "@views/NewsPage/SingleNewsPage/NewsHeader";
 import { useRouter } from "next/router";
-import NewsAddComment from "@views/NewsPage/SlugTitlePage/NewsAddComment";
-import NewsCommentList from "@views/NewsPage/SlugTitlePage/NewsCommentList";
-import RelatedNews from "@views/NewsPage/SlugTitlePage/RelatedNews";
+import NewsAddComment from "@views/NewsPage/SingleNewsPage/NewsAddComment";
+import NewsCommentList from "@views/NewsPage/SingleNewsPage/NewsCommentList";
+import RelatedNews from "@views/NewsPage/SingleNewsPage/RelatedNews";
 import { gql, useQuery } from "@apollo/client";
 import Error from "pages/_error";
 
