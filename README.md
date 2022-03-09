@@ -20,4 +20,4 @@
 # .env file
 
 - add .env.production file
-- add NEXT_PUBLIC_WAGTAIL_URL=http://ec2-3-237-8-137.compute-1.amazonaws.com/graphql/
+- add NEXT_PUBLIC_WAGTAIL_URL=https://backend-stg.silver.sh/graphql/
