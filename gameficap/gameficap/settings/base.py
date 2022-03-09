@@ -26,6 +26,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'blog',
+    'user_auth',
     'search',
 
     'wagtail.contrib.forms',
@@ -184,9 +185,11 @@ BASE_URL = 'http://localhost:8000'
 # GraphQL Config:
 GRAPHENE = {"SCHEMA": "grapple.schema.schema"}
 GRAPPLE = {
-    "APPS": ["home", "blog"],
+    "APPS": ["home", "blog", "auth"],
 }
 
 CORS_ALLOW_HEADERS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+
+

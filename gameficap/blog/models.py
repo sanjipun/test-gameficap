@@ -1,3 +1,4 @@
+from cProfile import label
 from django.db import models
 from django import forms
 from django.db.models.aggregates import Count
@@ -5,7 +6,12 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
 from wagtail.core.models import Page
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.admin.edit_handlers import (FieldPanel, StreamFieldPanel,MultiFieldPanel)
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    StreamFieldPanel,
+    MultiFieldPanel,
+    InlinePanel
+    )
 from wagtail.images.edit_handlers import ImageChooserPanel
 from blog.helpers import register_query_field
 
@@ -33,7 +39,7 @@ class ArticlePageTag(TagBase):
     free_tagging = True
 
     class Meta:
-        verbose_name = " Article Tag"
+        verbose_name = "Article Tag"
         verbose_name_plural = "Article Tags"
 
     graphql_fields = [
@@ -145,4 +151,6 @@ class ArticleCategory(models.Model):
     class Meta:
         verbose_name = " Article Category"
         verbose_name_plural = "Article Categories"
+
+
 
