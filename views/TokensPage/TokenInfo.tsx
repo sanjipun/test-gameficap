@@ -7,7 +7,7 @@ const TokenInfo: React.FC<TokenInfoProps> = () => {
   return (
     <div className="max-w-1440 mx-auto px-20 py-16 grid grid-cols-4 gap-10">
       {TOKEN_INFO.map((info) => (
-        <TokenInfoCard info={info} />
+        <TokenInfoCard key={info.name} info={info} />
       ))}
     </div>
   );

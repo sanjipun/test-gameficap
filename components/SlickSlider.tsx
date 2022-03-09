@@ -9,7 +9,7 @@ interface SlickSliderProps {
 const SlickSlider: React.FC<SlickSliderProps> = ({ children, totalData }) => {
   const settings = {
     dots: false,
-    arrows: true,
+    arrows: false,
     infinite: false,
     speed: 500,
     slidesToShow: totalData <= 4 ? 4 : 4.5,

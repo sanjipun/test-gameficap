@@ -17,13 +17,13 @@ const HomePage: NextPage = () => (
       description="Home for all blockchain games, prices, charts and market capitalization."
     />
     <LandingPage />
-    <StarChartsSection />
+    {/*<StarChartsSection />*/}
     <FavoriteTokens />
     <GameFiCapProjects />
     <TrendingNews />
     <TrendingTokens />
-    <TopNFTs />
-    <TrendingGames />
+    {/*<TopNFTs />*/}
+    {/*<TrendingGames />*/}
   </div>
 );
 
