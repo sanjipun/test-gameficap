@@ -5,7 +5,7 @@ type TagTypes = {
   setActiveTag: (tag: string) => void;
 };
 export const useTag = create<TagTypes>((set) => ({
-  activeTag: "all",
+  activeTag: "all-news",
   setActiveTag: (tag: string) => {
     set({ activeTag: tag });
   },

@@ -26,7 +26,7 @@ export default TokensSlug;
 
 export const getStaticPaths = async () => {
   const paths = ["roy", "rar", "groy"].map((path) => ({
-    params: { token: path },
+    params: { tokenType: "tokens", token: path },
   }));
   return { paths, fallback: false };
 };

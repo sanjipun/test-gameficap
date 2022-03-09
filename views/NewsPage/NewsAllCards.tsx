@@ -31,6 +31,36 @@ const GET_SNIPPETS = gql`
     }
   }
 `;
+
+const GET_ALL_NEWS = gql`
+  query MyQuery {
+    pages {
+      ... on ArticlePage {
+        slug
+        title
+        date
+        body {
+          ... on ImageChooserBlock {
+            image {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const GET_LATEST_NEWS = gql`
+  query MyQuery {
+    articles(order: "-first_published_at", limit: 20) {
+      slug
+      title
+      date
+    }
+  }
+`;
+
 const AllCards = () => {
   const { activeTag } = useTag();
   const router = useRouter();
@@ -47,16 +77,33 @@ const AllCards = () => {
     },
   });
 
+  const allNews = useQuery(GET_ALL_NEWS, {
+    variables: {
+      category: Number(id),
+    },
+  });
+
+  const latestNews = useQuery(GET_LATEST_NEWS);
   const filteredData = data?.articles?.filter((article) =>
-    article.tags.some((tag) => tag.name === activeTag)
+    article.tags.some((tag: { name: string }) => tag.name === activeTag)
   );
+
+  const getData = () => {
+    const data =
+      activeTag === "all-news"
+        ? allNews?.data?.pages
+        : activeTag === "latest-news"
+        ? latestNews?.data?.articles
+        : filteredData;
+    return data;
+  };
 
   return (
     <div id="news-all-cards" className="bg-C4C4C4 bg-opacity-20 py-28">
       <div className="grid grid-cols-4 gap-10 max-w-1440 mx-auto px-20">
-        {activeTag == "all"
-          ? data?.articles?.map((value: any) => <NewsCard key={value.title} data={value} />)
-          : filteredData?.map((value: any) => <NewsCard key={value.title} data={value} />)}
+        {getData()?.map(
+          (value: any) => value.title !== undefined && <NewsCard key={value.title} data={value} />
+        )}
       </div>
     </div>
   );

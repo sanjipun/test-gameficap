@@ -29,6 +29,7 @@ const TokenChart: React.FC<TokenChartProps> = () => {
           <div className="inline-flex py-1 rounded-md pt-1 bg-C4C4C4 bg-opacity-30">
             {TIME.map((time, i: number) => (
               <h1
+                key={i}
                 onClick={() => setActiveTime(time)}
                 className={`${i === 0 && "ml-1"} mr-1 px-2 cursor-pointer rounded-md pt-1 ${
                   activeTime === time && "bg-white"
