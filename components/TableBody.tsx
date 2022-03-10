@@ -24,9 +24,9 @@ const TableBody: React.FC<TableBodyProps> = ({ tokenData }) => {
         <AiOutlineStar />
       </td>
       <td>{tokenData.rank}</td>
-      <td className="flex h-14 items-center">
+      <td className="sticky top-0 left-0 flex h-14 w-28 md:w-72 justify-start items-center">
         <img src="/assets/Image.svg" className="mr-2 w-5 h-5" />
-        {tokenData.tokenName} {tokenData.tokenSymbol}
+        <span className="hidden md:flex mr-2">{tokenData.tokenName}</span> {tokenData.tokenSymbol}
       </td>
       <td>{tokenData.tokenPrice}</td>
       <td>{tokenData["24hr%"]}</td>

@@ -17,7 +17,7 @@ const RelatedNews: React.FC<RelatedNewsProps> = () => {
 
   return (
     <section id="related-news" className="bg-F3F3F3">
-      <div className="max-w-1440 mx-auto px-20 py-20">
+      <div className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20 py-20">
         <SectionTitle title="Related News"></SectionTitle>
         <SlickSlider totalData={data?.pages?.length}>
           {data?.article?.relatedArticles?.map((data, i) => (

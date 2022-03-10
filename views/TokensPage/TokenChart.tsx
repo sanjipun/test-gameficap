@@ -17,7 +17,7 @@ const TokenChart: React.FC<TokenChartProps> = () => {
   const [activeTime, setActiveTime] = React.useState<string>("1D");
   return (
     <div className="bg-F9F9F9 bg-opacity-60 text-primary">
-      <div className="max-w-1440 mx-auto px-20 py-16">
+      <div className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20 py-16">
         <div className="p-9 bg-white rounded-3xl">
           <div className="flex justify-between">
             <h1 className="text-2xl font-medium">Royal Protocol (ROY) Price Chart</h1>

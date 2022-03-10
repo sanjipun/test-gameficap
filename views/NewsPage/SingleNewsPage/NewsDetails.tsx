@@ -16,7 +16,10 @@ type newsDetailsTypes = {
 };
 const NewsDetails: React.FC<newsDetailsTypes> = ({ data }) => {
   return (
-    <div id="news-details" className="max-w-1440 mx-auto px-20 pb-14 text-primary leading-6">
+    <div
+      id="news-details"
+      className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20 pb-14 text-primary leading-6"
+    >
       <div className="mt-14 flex">
         <h1 className="flex items-center mr-6">
           <CgProfile className="mr-1 capitalize" /> {data?.articles[0]?.author}

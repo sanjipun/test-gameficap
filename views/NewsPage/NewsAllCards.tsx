@@ -100,7 +100,7 @@ const AllCards = () => {
 
   return (
     <div id="news-all-cards" className="bg-C4C4C4 bg-opacity-20 py-28">
-      <div className="grid grid-cols-4 gap-10 max-w-1440 mx-auto px-20">
+      <div className="grid grid-cols-4 gap-10 max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20">
         {getData()?.map(
           (value: any) => value.title !== undefined && <NewsCard key={value.title} data={value} />
         )}

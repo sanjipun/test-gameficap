@@ -9,7 +9,10 @@ interface TokenHeaderProps {}
 const TokenHeader: React.FC<TokenHeaderProps> = () => {
   const address = "0xdce27d41b4ff72b55a876c621f5a5fef8537c99d";
   return (
-    <div id="token-header" className="max-w-1440 mx-auto px-20 mt-7 text-primary">
+    <div
+      id="token-header"
+      className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20 mt-7 text-primary"
+    >
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           <img src="/assets/Image.svg" className="w-20 h-20" />

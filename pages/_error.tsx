@@ -1,6 +1,6 @@
 function Error({ statusCode }) {
   return (
-    <p className="max-w-1440 mx-auto px-20">
+    <p className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20">
       {statusCode ? `An error ${statusCode} occurred on server` : "An error occurred on client"}
     </p>
   );

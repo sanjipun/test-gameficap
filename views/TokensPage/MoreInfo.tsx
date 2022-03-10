@@ -5,7 +5,7 @@ interface MoreInfoProps {}
 const MoreInfo: React.FC<MoreInfoProps> = () => {
   return (
     <div className="bg-FAFAFA">
-      <div className="max-w-1440 mx-auto px-20 py-16">
+      <div className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20 py-16">
         <div className="bg-white p-9 rounded-3xl">
           <h1>Info Holders Liquidity Providers</h1>
           <h1 className="my-7 text-2xl font-medium">ROY Price Data</h1>

@@ -13,11 +13,11 @@ const index: React.FC = () => {
   return (
     <div id="tokens-page">
       <BreadCrumbs data={[SlugToTitle(router?.query?.tokenType as string)]} />
-      <div className="max-w-1440 mx-auto px-20">
+      <div className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20">
         <TokenTypeHeader title={SlugToTitle(router?.query?.tokenType as string)} />
       </div>
       <div className="bg-C4C4C4 bg-opacity-15 py-12">
-        <div className="max-w-1440 mx-auto px-20">
+        <div className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20">
           <table className="w-full">
             <thead className="border border-C4C4C4 border-opacity-50">
               <TableHead />

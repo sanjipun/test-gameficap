@@ -5,7 +5,7 @@ const TableHead = () => {
     <tr>
       <th> </th>
       <th>#</th>
-      <th>Name</th>
+      <th className="sticky top-0 left-0">Name</th>
       <th>Price</th>
       <th>24h%</th>
       <th>7d%</th>

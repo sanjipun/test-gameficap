@@ -10,7 +10,7 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ data }) => {
   return (
     <section
       id="breadcrumbs"
-      className="max-w-1440 mx-auto px-20 py-8 flex items-center capitalize"
+      className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20 py-8 flex items-center capitalize"
     >
       <IoIosHome /> <AiOutlineRight className="ml-2" />{" "}
       {data.length === 0
