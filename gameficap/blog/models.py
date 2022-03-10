@@ -2,6 +2,7 @@ from cProfile import label
 from django.db import models
 from django import forms
 from django.db.models.aggregates import Count
+from django.conf import settings
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
 from wagtail.core.models import Page
@@ -14,6 +15,7 @@ from wagtail.admin.edit_handlers import (
     )
 from wagtail.images.edit_handlers import ImageChooserPanel
 from blog.helpers import register_query_field
+from django_comments_xtd.models import XtdComment
 
 from grapple.helpers import register_paginated_query_field
 from grapple.models import(
@@ -23,7 +25,7 @@ from grapple.models import(
     GraphQLTag,
     GraphQLForeignKey,
     GraphQLCollection,
-    GraphQLPage,
+    GraphQLInt,
     GraphQLBoolean
 )
 from wagtail.snippets.models import register_snippet
@@ -119,6 +121,11 @@ class ArticlePage(Page):
             GraphQLForeignKey,
             "related_articles",
             "blog.ArticlePage"
+        ),
+        GraphQLCollection(
+            GraphQLForeignKey,
+            "article_comments",
+            "blog.ArticleComment"
         )
     
     ]
@@ -153,4 +160,19 @@ class ArticleCategory(models.Model):
         verbose_name_plural = "Article Categories"
 
 
+class ArticleComment(XtdComment):
+    page = ParentalKey(
+        "blog.ArticlePage", 
+        on_delete=models.CASCADE, 
+        related_name="article_comments"
+    )
 
+    graphql_fields = [
+        GraphQLString("user_name"),
+        GraphQLString("comment"),
+        GraphQLString("submit_date"),
+        GraphQLInt("thread_id"),
+        GraphQLInt("parent_id"),
+        GraphQLInt("level"),
+        GraphQLInt("order")
+    ]

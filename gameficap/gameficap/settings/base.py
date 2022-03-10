@@ -24,11 +24,14 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'django_comments_xtd',
+    'django_comments',
+
     'home',
     'blog',
     'user_auth',
     'search',
-
+    'django.contrib.sites',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.contrib.settings',
@@ -193,3 +196,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
 
 
+
+COMMENTS_APP = 'django_comments_xtd'
+COMMENTS_XTD_MODEL = 'blog.models.ArticleComment'
+
+SITE_ID = 1
