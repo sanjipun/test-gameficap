@@ -25,8 +25,8 @@ const SlugTitle = () => {
     <div id="single-news-detail-page" className="pt-28 text-primary">
       <div className="lg:px-32">
         <NewsHeader title={(title as string)?.split("-").join(" ")} />
+        <NewsDetails data={data} />
       </div>
-      <NewsDetails data={data} />
       <NewsAddComment />
       <NewsCommentList />
       <RelatedNews />

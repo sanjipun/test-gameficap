@@ -18,20 +18,20 @@ const TokenChart: React.FC<TokenChartProps> = () => {
   return (
     <div className="bg-F9F9F9 bg-opacity-60 text-primary">
       <div className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20 py-16">
-        <div className="p-9 bg-white rounded-3xl">
+        <div className="p-4 lg:p-9 bg-white rounded-3xl">
           <div className="flex justify-between">
-            <h1 className="text-2xl font-medium">Royal Protocol (ROY) Price Chart</h1>
+            <h1 className="text-lg md:text-2xl font-medium">Royal Protocol (ROY) Price Chart</h1>
             <div className="flex items-center">
               <GiExpand className="w-6 h-6 mr-4" />
               <AiOutlineCamera className="w-6 h-6" />
             </div>
           </div>
-          <div className="inline-flex py-1 rounded-md pt-1 bg-C4C4C4 bg-opacity-30">
+          <div className="inline-flex flex-wrap py-1 rounded-md pt-1 bg-C4C4C4 bg-opacity-30">
             {TIME.map((time, i: number) => (
               <h1
                 key={i}
                 onClick={() => setActiveTime(time)}
-                className={`${i === 0 && "ml-1"} mr-1 px-2 cursor-pointer rounded-md pt-1 ${
+                className={`${i === 0 && "ml-1"} m-1 px-2 cursor-pointer rounded-md pt-1 ${
                   activeTime === time && "bg-white"
                 }`}
               >
@@ -48,8 +48,19 @@ const TokenChart: React.FC<TokenChartProps> = () => {
                 </linearGradient>
               </defs>
               <Tooltip />
-              <XAxis dataKey="amt" domain={[0, "dataMax + 100"]} />
-              <YAxis dataKey="pv" orientation="right" domain={[0, "dataMax + 100"]} />
+              <XAxis
+                dataKey="amt"
+                width={20}
+                tick={{ fontSize: 10 }}
+                domain={[0, "dataMax + 100"]}
+              />
+              <YAxis
+                dataKey="pv"
+                orientation="right"
+                width={20}
+                tick={{ fontSize: 10 }}
+                domain={[0, "dataMax + 100"]}
+              />
               <CartesianGrid strokeDasharray="5 5" />
               <Area
                 type="monotone"

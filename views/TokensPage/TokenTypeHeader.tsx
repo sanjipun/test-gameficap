@@ -21,10 +21,10 @@ const TokenTypeHeader: React.FC<TokenTypeHeaderProps> = ({ title }) => {
         amet, consectetur adipiscing elit. Ullamcorper consec elementum augue scelerisque mi aliquet
         etiam urna.
       </p>
-      <div className="flex justify-start items-center mt-16">
+      <div className="flex justify-start items-center flex-wrap mt-16">
         {TAGS.map((tag) => {
           return (
-            <Link href={`/${tag}`}>
+            <Link href={`/${tag}`} key={tag}>
               <a
                 className={`${
                   router?.query?.tokenType === tag
@@ -40,25 +40,25 @@ const TokenTypeHeader: React.FC<TokenTypeHeaderProps> = ({ title }) => {
       </div>
       <div className="my-12">
         <span className="text-xs">Filter by: </span>
-        <select className="w-32 border border-C9D2D8 rounded py-1 px-3 ml-2">
+        <select className="w-32 border border-C9D2D8 rounded py-1 px-3 m-2 ">
           <option value="1">Category 1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        <select className="w-32 border border-C9D2D8 rounded py-1 px-3 ml-2">
+        <select className="w-32 border border-C9D2D8 rounded py-1 px-3 ml-0 m-2 ">
           <option value="1">Category 2</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        <select className="w-32 border border-C9D2D8 rounded py-1 px-3 ml-2">
+        <select className="w-32 border border-C9D2D8 rounded py-1 px-3 ml-0 m-2 ">
           <option value="1">Category 3</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        <select className="w-32 border border-C9D2D8 rounded py-1 px-3 ml-2">
+        <select className="w-32 border border-C9D2D8 rounded py-1 px-3 ml-0 m-2 ">
           <option value="1">Category 4</option>
           <option value="2">2</option>
           <option value="3">3</option>

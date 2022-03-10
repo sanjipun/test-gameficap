@@ -18,16 +18,18 @@ const index: React.FC = () => {
       </div>
       <div className="bg-C4C4C4 bg-opacity-15 py-12">
         <div className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20">
-          <table className="w-full">
-            <thead className="border border-C4C4C4 border-opacity-50">
-              <TableHead />
-            </thead>
-            <tbody className="border border-C4C4C4 border-opacity-50">
-              {GAMEFICAPPROJECTS_DATA.map((tokenData) => (
-                <TableBody key={tokenData.tokenName} tokenData={tokenData} />
-              ))}
-            </tbody>
-          </table>
+          <div className="overflow-x-scroll">
+            <table className="w-full">
+              <thead className="border border-C4C4C4 border-opacity-50">
+                <TableHead />
+              </thead>
+              <tbody className="border border-C4C4C4 border-opacity-50">
+                {GAMEFICAPPROJECTS_DATA.map((tokenData) => (
+                  <TableBody key={tokenData.tokenName} tokenData={tokenData} />
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -38,7 +40,7 @@ export default index;
 
 export const getStaticPaths = async () => {
   const paths = [
-    "all-tokens",
+    "tokens",
     "trending-tokens",
     "gamefi-tokens",
     "recently-added-tokens",
