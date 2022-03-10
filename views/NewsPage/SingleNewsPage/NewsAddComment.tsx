@@ -3,7 +3,7 @@ import React from "react";
 const SlugTitleAddComment = () => {
   return (
     <section id="news-add-comment" className="bg-FAFAFA">
-      <div className="max-w-1440 mx-auto px-52 py-14">
+      <div className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-52 py-14">
         <h1 className="text-2xl text-primary mb-5">Leave a comment</h1>
         <input type="text" placeholder="Full Name" className="w-full bg-F4F5F7 px-9 py-6" />
         <textarea placeholder="Type Comment" className="w-full bg-F4F5F7 h-40 mt-7 px-9 py-6" />

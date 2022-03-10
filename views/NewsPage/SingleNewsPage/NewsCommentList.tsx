@@ -7,7 +7,7 @@ interface NewsCommentListProps {}
 const NewsCommentList: React.FC<NewsCommentListProps> = () => {
   return (
     <section id="slug-title-comments" className="bg-FAFAFA">
-      <div className="max-w-1440 mx-auto px-52 py-14">
+      <div className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-52 py-14">
         <h1 className="text-2xl text-primary mb-5 leading-47 font-semibold">Comments (14)</h1>
         {COMMENTS.map((comment) => (
           <Comments key={comment.id} data={comment} />

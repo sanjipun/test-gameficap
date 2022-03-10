@@ -11,12 +11,12 @@ const Navbar = () => {
   return (
     <div className="bg-FAFAFA relative">
       <nav id="nav" className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20">
-        <div className="hidden md:flex justify-between items-center h-24">
+        <div className="hidden lg:flex justify-between items-center h-24">
           <Link href="/">Logo</Link>
           <div>
             {NAVBAR_DATA.map((navData, i: number) => (
               <Link key={i} href={navData.path}>
-                <a className="mx-8 capitalize">{navData.name}</a>
+                <a className="mx-4 capitalize">{navData.name}</a>
               </Link>
             ))}
           </div>
@@ -34,7 +34,7 @@ const Navbar = () => {
             <SignUp />
           </div>
         </div>
-        <div className="h-24 flex md:hidden justify-between items-center">
+        <div className="h-24 flex lg:hidden justify-between items-center">
           {!openMenu && <GiHamburgerMenu onClick={() => setOpenMenu(true)} className="w-7 h-7" />}
           {openMenu && <GrClose onClick={() => setOpenMenu(false)} className="w-7 h-7" />}
           <Link href="/">Logo</Link>

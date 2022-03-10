@@ -20,7 +20,7 @@ const NewsDetails: React.FC<newsDetailsTypes> = ({ data }) => {
       id="news-details"
       className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20 pb-14 text-primary leading-6"
     >
-      <div className="mt-14 flex">
+      <div className="mt-14 flex flex-wrap">
         <h1 className="flex items-center mr-6">
           <CgProfile className="mr-1 capitalize" /> {data?.articles[0]?.author}
         </h1>
