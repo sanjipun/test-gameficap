@@ -9,7 +9,7 @@ import SignUp from "./SignUp";
 const Navbar = () => {
   const [openMenu, setOpenMenu] = React.useState<boolean>(false);
   return (
-    <div className="bg-FAFAFA relative">
+    <div className="bg-FAFAFA relative z-0">
       <nav id="nav" className="max-w-1440 mx-auto px-5 sm:px-7 md:px-10 lg:px-20">
         <div className="hidden lg:flex justify-between items-center h-24">
           <Link href="/">Logo</Link>

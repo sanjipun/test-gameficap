@@ -42,7 +42,7 @@ const data = [
 const TokensCard = () => {
   return (
     <div className="flex justify-start items-center">
-      <div className="bg-white text-primary w-64 border border-C9D2D8">
+      <div className="bg-white text-primary w-64 border border-C9D2D8 z-40">
         <div className="flex justify-between items-center p-3">
           <div className="flex items-center">
             <img src="/assets/Image.svg" className="w-12 h-12 mr-3" />
