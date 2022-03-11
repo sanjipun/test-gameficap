@@ -1,7 +1,6 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import Modal from "@components/Modal/Modal";
 import { useAuth } from "@store/auth.store";
-import client from "@utils/apollo-client";
 import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
